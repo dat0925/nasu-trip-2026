@@ -1,0 +1,575 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>那須 3日間 ── 出発日5パターンの費用比較</title>
+<meta name="description" content="10/9・10/10・10/16・10/23・10/30 発の那須2泊3日を、宿泊費・遊興費・交通費まで含めてまるごと比較。">
+<meta name="theme-color" content="#14342b">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New:wght@400;500;700;900&family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<style>
+/* ---------- series colours（検証済み：明暗どちらもCVD分離・彩度・コントラストPASS）---------- */
+:root{ --s1:#068a70; --s2:#bd6a12; --chart-surface:var(--bg-2); }
+@media (prefers-color-scheme: dark){ :root{ --s1:#27a186; --s2:#c48430; } }
+
+html{scroll-padding-top:64px}
+.topbar{
+  position:sticky;top:0;z-index:40;
+  background:color-mix(in srgb,var(--bg) 92%,transparent);
+  backdrop-filter:saturate(1.6) blur(12px);
+  border-bottom:1px solid var(--line);
+}
+nav a.home{background:var(--green);border-color:var(--green);color:#f3efe6}
+@media (prefers-color-scheme: dark){nav a.home{background:var(--green-2);border-color:var(--green-2);color:#10120f}}
+
+/* ---------- headline tiles ---------- */
+.tiles{display:grid;gap:14px;margin-top:6px}
+@media(min-width:700px){.tiles{grid-template-columns:repeat(3,1fr)}}
+.tile{
+  background:var(--bg-2);border:1px solid var(--line);border-radius:var(--r);
+  padding:18px 20px;box-shadow:var(--shadow);position:relative;overflow:hidden;
+}
+.tile::before{content:"";position:absolute;inset:0 auto 0 0;width:4px;background:var(--tone,var(--green-2))}
+.tile .k{font-size:11px;font-weight:900;letter-spacing:.13em;color:var(--ink-3);text-transform:uppercase}
+.tile .d{font-size:clamp(22px,5.4vw,27px);font-weight:900;letter-spacing:-.02em;margin:5px 0 1px;line-height:1.2}
+.tile .n{font-size:14px;font-weight:900;color:var(--tone,var(--green-2));font-feature-settings:"tnum"}
+.tile p{font-size:12.5px;color:var(--ink-2);line-height:1.6;margin-top:8px}
+
+/* ---------- chart ---------- */
+.chartbox{
+  background:var(--bg-2);border:1px solid var(--line);border-radius:var(--r);
+  padding:20px;box-shadow:var(--shadow);margin-top:18px;
+}
+.chart-head{display:flex;flex-wrap:wrap;gap:12px;align-items:baseline;justify-content:space-between;margin-bottom:4px}
+.chart-head h3{font-size:16px;font-weight:900}
+.chart-head p{font-size:12px;color:var(--ink-3)}
+.seg{display:inline-flex;border:1px solid var(--line);border-radius:10px;overflow:hidden;background:var(--bg)}
+.seg button{
+  font-family:inherit;font-size:11.5px;font-weight:800;color:var(--ink-2);
+  background:transparent;border:none;padding:6px 12px;cursor:pointer;transition:background .16s,color .16s;
+}
+.seg button+button{border-left:1px solid var(--line)}
+.seg button[aria-pressed="true"]{background:var(--green);color:#f3efe6}
+@media (prefers-color-scheme: dark){.seg button[aria-pressed="true"]{background:var(--green-2);color:#10120f}}
+.legend{display:flex;gap:16px;flex-wrap:wrap;margin:14px 0 6px}
+.legend span{display:inline-flex;align-items:center;gap:7px;font-size:12.5px;font-weight:800;color:var(--ink-2)}
+.legend i{width:11px;height:11px;border-radius:3px;display:block;flex:0 0 auto}
+.brow{display:grid;grid-template-columns:72px 1fr;gap:12px;align-items:center;padding:12px 0;border-bottom:1px solid var(--line)}
+.brow:last-child{border-bottom:none}
+.brow.best{background:color-mix(in srgb,var(--s1) 7%,transparent);border-radius:10px;padding-left:8px;padding-right:8px;margin:0 -8px}
+.blabel{font-size:13px;font-weight:900;font-feature-settings:"tnum";line-height:1.25}
+.blabel small{display:block;font-size:10px;font-weight:800;color:var(--ink-3);letter-spacing:.04em;margin-top:2px}
+.bars{display:grid;gap:3px}
+.bar{display:flex;align-items:center;height:19px}
+.bar i{display:block;height:100%;border-radius:0 4px 4px 0;min-width:3px;transition:width .35s cubic-bezier(.2,.7,.3,1)}
+.bar.s1 i{background:var(--s1)}
+.bar.s2 i{background:var(--s2)}
+.bar b{font-size:11.5px;font-weight:900;font-feature-settings:"tnum";color:var(--ink-2);margin-left:8px;white-space:nowrap}
+.bar:focus-visible{outline:2px solid var(--green-2);outline-offset:2px;border-radius:4px}
+.axis{display:flex;justify-content:space-between;font-size:10.5px;font-weight:800;color:var(--ink-3);
+  margin-top:10px;padding-top:8px;border-top:1px dashed var(--line);font-feature-settings:"tnum"}
+.tip{
+  position:fixed;z-index:60;pointer-events:none;opacity:0;transition:opacity .12s;
+  background:var(--ink);color:var(--bg-2);font-size:12px;font-weight:700;
+  padding:8px 11px;border-radius:9px;box-shadow:var(--shadow-lg);line-height:1.55;
+}
+.tip b{font-weight:900;font-feature-settings:"tnum"}
+
+/* ---------- table ---------- */
+.tblwrap{overflow-x:auto;border:1px solid var(--line);border-radius:var(--r);background:var(--bg-2);box-shadow:var(--shadow);margin-top:18px}
+table{border-collapse:collapse;width:100%;min-width:660px;font-size:13px}
+th,td{padding:9px 13px;text-align:right;border-bottom:1px solid var(--line);white-space:nowrap;font-feature-settings:"tnum"}
+th:first-child,td:first-child{
+  text-align:left;position:sticky;left:0;background:var(--bg-2);z-index:1;
+  font-feature-settings:normal;box-shadow:1px 0 0 var(--line);
+}
+thead th{font-size:11.5px;font-weight:900;color:var(--ink-2);background:var(--bg-2);letter-spacing:.02em}
+thead th small{display:block;font-size:10px;font-weight:800;color:var(--ink-3);margin-top:1px}
+tbody th{font-weight:700;font-size:12.5px}
+tbody th small{display:block;font-size:10.5px;font-weight:500;color:var(--ink-3);line-height:1.5}
+tr.rule td,tr.rule th{border-top:2px solid var(--line)}
+tr.sum th,tr.sum td{font-weight:900;font-size:14px}
+tr:last-child td,tr:last-child th{border-bottom:none}
+@media(max-width:620px){
+  th:first-child,td:first-child{max-width:148px;white-space:normal;padding-right:10px}
+  tbody th{font-size:12px;line-height:1.4}
+  tbody th small{font-size:10px;line-height:1.4}
+  th,td{padding:9px 10px}
+  table{min-width:560px}
+}
+td.best{color:var(--s1);font-weight:900;background:color-mix(in srgb,var(--s1) 8%,transparent)}
+td.best::after{content:" ◀ 最安";font-size:9.5px;letter-spacing:.04em}
+td.neg{color:var(--rose)}
+.tag-est{display:inline-block;font-size:9.5px;font-weight:900;letter-spacing:.04em;padding:1px 6px;border-radius:5px;
+  background:var(--amber-soft);color:var(--amber);margin-top:3px}
+.tag-fix{background:color-mix(in srgb,var(--green-2) 16%,transparent);color:var(--green-2)}
+
+/* ---------- pick cards ---------- */
+.picks{display:grid;gap:14px;margin-top:6px}
+@media(min-width:720px){.picks{grid-template-columns:1fr 1fr}}
+.pick{background:var(--bg-2);border:1px solid var(--line);border-radius:var(--r);padding:18px 20px;box-shadow:var(--shadow)}
+.pick h3{font-size:15px;font-weight:900;margin-bottom:2px}
+.pick .q{font-size:11.5px;font-weight:900;letter-spacing:.1em;color:var(--amber);text-transform:uppercase}
+.pick p{font-size:13px;color:var(--ink-2);line-height:1.7;margin-top:8px}
+
+/* ---------- model / formula ---------- */
+.formula{
+  font-family:"Cormorant Garamond",ui-monospace,monospace;
+  background:var(--bg);border:1px solid var(--line);border-radius:12px;
+  padding:12px 14px;margin-top:12px;font-size:14px;line-height:1.9;color:var(--ink-2);overflow-x:auto;
+}
+.formula em{font-style:normal;font-weight:700;color:var(--green-2)}
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="wrap">
+    <p class="eyebrow">Five Departures &mdash; Side by Side</p>
+    <h1>出発日で<br>いくら変わる？<small>10/9・10/10・10/16・10/23・10/30 発 ／ 那須2泊3日 ／ 大人2名＋小学3年生1名</small></h1>
+    <div class="badges">
+      <span class="badge b3">固定費は全日程 61,000円で共通</span>
+      <span class="badge b1">変わるのは宿泊料だけ</span>
+    </div>
+  </div>
+</header>
+
+<div class="topbar">
+  <nav>
+    <div class="wrap">
+      <a class="home" href="index.html">← 旅行計画ページ</a>
+      <a href="#tiles">結論</a>
+      <a href="#chart">グラフ</a>
+      <a href="#table">明細表</a>
+      <a href="#pick">選び方</a>
+      <a href="#model">推定の根拠</a>
+    </div>
+  </nav>
+</div>
+
+<main>
+
+<!-- ============ TILES ============ -->
+<section id="tiles">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="sec-num">Bottom line</p>
+      <h2>結論 ── 差は約1万円、決め手は別のところ</h2>
+      <p id="tilesLead"></p>
+    </div>
+    <div class="tiles" id="tilesBox"></div>
+  </div>
+</section>
+
+<!-- ============ CHART ============ -->
+<section id="chart">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="sec-num">At a glance</p>
+      <h2>5日程 × 2プランの総額</h2>
+      <p>棒は「3名・2泊3日の総額」です。宿泊料・ステーキ・遊興費・交通費・食費とお土産をすべて含みます。</p>
+    </div>
+
+    <div class="chartbox">
+      <div class="chart-head">
+        <div>
+          <h3 id="chartTitle">実費の総額</h3>
+          <p id="chartSub">クーポン・早割を引いた、実際に支払う金額</p>
+        </div>
+        <div class="seg" role="group" aria-label="表示する金額">
+          <button type="button" id="btnTotal" aria-pressed="true">実費</button>
+          <button type="button" id="btnReal" aria-pressed="false">ポイント還元後</button>
+        </div>
+      </div>
+      <div class="legend">
+        <span><i style="background:var(--s1)"></i>A案 ねむりん ＋ サンバレー那須</span>
+        <span><i style="background:var(--s2)"></i>B案 ねむりん ＋ エピナール那須</span>
+      </div>
+      <div id="bars"></div>
+      <div class="axis"><span>0円</span><span id="axisMax">200,000円</span></div>
+    </div>
+
+    <div class="chartbox">
+      <div class="chart-head">
+        <div>
+          <h3 id="deltaTitle">最安日程との差額だけを見る</h3>
+          <p id="deltaSub">総額はどれも15〜18万円台で似通うので、上乗せ額だけを取り出したのがこちらです</p>
+        </div>
+      </div>
+      <div class="legend">
+        <span><i style="background:var(--s1)"></i>A案 ＋サンバレー那須</span>
+        <span><i style="background:var(--s2)"></i>B案 ＋エピナール那須</span>
+      </div>
+      <div id="deltaBars"></div>
+      <div class="axis"><span>±0円</span><span id="deltaMax"></span></div>
+    </div>
+
+    <div class="card" style="margin-top:16px">
+      <p class="kicker">読み取れること</p>
+      <ul class="spec" style="border-top:none;padding-top:2px" id="insights"></ul>
+    </div>
+  </div>
+</section>
+
+<!-- ============ TABLE ============ -->
+<section id="table">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="sec-num">Line by line</p>
+      <h2>明細表</h2>
+      <p>金額はすべて3名合計・税込。<strong>10/10（土）発だけが実測値</strong>で、ほかの4日程は推定です。宿泊料以外の6項目は出発日によらず同額なので、差がつくのは上の3行だけです。</p>
+    </div>
+    <div class="tblwrap">
+      <table id="tbl"></table>
+    </div>
+    <p class="note" style="border-top:none;padding-left:2px">
+      じゃらんポイントは還元率12%。ねむりん・サンバレーはクーポン適用<strong>前</strong>の宿泊料に対して、
+      エピナールは早割適用<strong>後</strong>のプラン価格に対して付与される計算です（10/10発の実測値がこの計算式と一致することを確認しています）。
+    </p>
+  </div>
+</section>
+
+<!-- ============ PICK ============ -->
+<section id="pick">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="sec-num">How to choose</p>
+      <h2>で、どれにする？</h2>
+      <p>5日程の総額差は最大でも約1万円（A案）。<strong>1万円で何を買うか</strong>という選択だと考えると決めやすくなります。</p>
+    </div>
+    <div class="picks" id="picks"></div>
+
+    <div class="card" style="margin-top:16px">
+      <p class="kicker">全日程に共通する前提</p>
+      <ul class="spec" style="border-top:none;padding-top:2px">
+        <li><span>金曜発</span>10/9・10/16・10/23・10/30 はすべて<strong>金曜出発</strong>です。梗華ちゃんは学校を1日お休みする必要があります。10/10発だけが3連休を使って休まずに行ける日程。</li>
+        <li><span>固定費</span>那須ハイ 15,700円／とりっくあーとぴあ 6,100円／トレジャーストーンパーク 4,200円／ステーキ 5,700円／交通費 14,300円／食事・お土産 15,000円 ＝ <strong>合計61,000円</strong>。ここは出発日を変えても1円も動きません。</li>
+        <li><span>ステーキ</span>ねむりんの牛ステーキ食べ放題（Cプラン1,900円×3名）は現地精算。全日程共通です。</li>
+        <li><span>ふるさと納税</span>楽天トラベルのふるさと納税クーポン（寄付額の30%が戻る）を使う場合、この表のじゃらん価格とは別計算になります。どの日程でも同じように使えます。</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ============ MODEL ============ -->
+<section id="model">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="sec-num">Method</p>
+      <h2>推定の根拠</h2>
+      <p><strong>実地調査したのは 10/10（土）発の1日程だけ</strong>です。残り4日程の宿泊料は、その実測値を基準に「曜日」と「那須高原の紅葉シーズン相場」の2つの係数を掛けて算出しています。予約前に必ず じゃらん で実際の金額を確認してください。</p>
+    </div>
+
+    <div class="grid g2">
+      <div class="card accent">
+        <p class="kicker">Step 1 ／ 基準値（実測）</p>
+        <h3 style="font-size:15px">2026年8月28日 じゃらん調査</h3>
+        <ul class="spec" style="border-top:none;padding-top:6px">
+          <li><span>ねむりん</span>10/10（土）泊 <strong>45,000円</strong>（ノンアルコール基本プラン・別館ツイン）</li>
+          <li><span>サンバレー</span>10/11（日・祝前）泊 <strong>63,855円</strong>（ガーデンスウィート メゾネット）</li>
+          <li><span>エピナール</span>10/11（日・祝前）泊 <strong>91,287円</strong>（和洋室《絆》・早割適用前の通常料金）</li>
+        </ul>
+        <p class="note">この3つだけが実際に空室と金額を確認した数字です。</p>
+      </div>
+
+      <div class="card">
+        <p class="kicker">Step 2 ／ 係数</p>
+        <h3 style="font-size:15px">曜日 × 紅葉シーズン</h3>
+        <div class="formula">
+          推定宿泊料 ＝ <em>土曜泊の基準額</em> × <em>曜日係数</em> × <em>紅葉係数</em><br>
+          （100円単位に丸め）
+        </div>
+        <ul class="spec" style="margin-top:14px">
+          <li><span>曜日</span>金曜泊 <strong>0.80</strong>／土曜泊 <strong>1.00</strong>／連休中日の日曜泊 <strong>1.06</strong></li>
+          <li><span>紅葉</span>10/9〜11週 <strong>1.00</strong>／10/16〜18週 <strong>1.03</strong>／10/23〜25週 <strong>1.08</strong>（那須高原のピーク）／10/30〜11/1週 <strong>1.04</strong></li>
+        </ul>
+        <p class="note">サンバレー・エピナールの実測値は「連休中日の日曜泊」なので、まず 1.06 で割って土曜泊の基準額（サンバレー 60,200円／エピナール 86,100円）を出し、そこから各日程を計算しています。</p>
+      </div>
+    </div>
+
+    <div class="grid g2" style="margin-top:16px">
+      <div class="card">
+        <p class="kicker">Step 3 ／ 割引の当てはめ</p>
+        <ul class="spec" style="border-top:none;padding-top:2px">
+          <li><span>ねむりん</span>じゃらん宿クーポンは階段式。<strong>40,000円以上→7,500円／30,000円以上→5,000円／20,000円以上→3,000円</strong>で当てはめています。金曜泊は40,000円に届かないため、5,000円クーポンでの計算です。</li>
+          <li><span>サンバレー</span>宿クーポン 3,000円を全日程に適用。</li>
+          <li><span>エピナール</span>【早期割引42】で通常料金から −10%。宿クーポンの発行はありません。期限は各宿泊日の42日前（10/17泊＝9/5、10/24泊＝9/12、10/31泊＝9/19）。</li>
+          <li><span>ポイント</span>じゃらん 12%。ねむりん・サンバレーはクーポン前の宿泊料、エピナールは早割後のプラン価格に対して計算。</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <p class="kicker">この推定の弱いところ</p>
+        <ul class="spec" style="border-top:none;padding-top:2px">
+          <li><span>空室</span>推定できるのは<strong>価格だけ</strong>です。実際にその部屋が空いているかは各サイトで確認が必要。特に10/23発は紅葉ピークで早く埋まります。</li>
+          <li><span>クーポン</span>じゃらんのクーポンは配布時期・枚数・条件が頻繁に変わります。表の金額は「今と同水準のクーポンが取れたら」という前提です。</li>
+          <li><span>プラン</span>10/10以外の日程では、同じプランが設定されていない可能性があります（特にサンバレーの「秋の栃木那須巡り」は期間限定プラン）。</li>
+          <li><span>差し替え</span>実際の見積りが出たら <code>data.js</code> の <code>rates</code> を書き換えるだけで、このページと計画ページの数字がすべて自動で更新されます。</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <p>調査日：2026年8月28日。料金・空室は変動します。予約前に各サイトで最新の金額をご確認ください。</p>
+    <p>価格はすべて 大人2名＋小学3年生（じゃらん「小学生」区分）1名・1室の税込総額です。</p>
+    <p><a href="index.html">← 旅行計画ページに戻る</a></p>
+  </div>
+</footer>
+
+<div class="tip" id="tip" role="status" aria-live="polite"></div>
+
+<script src="data.js"></script>
+<script>
+(function () {
+  'use strict';
+  var N = window.NASU, yen = N.yen, D = N.DEPARTURES;
+  function $(id) { return document.getElementById(id); }
+  function round100(n) { return Math.round(n / 100) * 100; }
+  function man(n) { return (n / 10000).toFixed(1) + '万円'; }
+
+  var mode = 'total';                       /* 'total' | 'real' */
+  var SCALE = 200000;                       /* 軸の上限 ＝ 予算上限20万円 */
+
+  function val(dep, plan) { return dep.calc[plan][mode]; }
+
+  /* ---------------- 集計 ---------------- */
+  var cheapestA = D.slice().sort(function (a, b) { return a.calc.A.total - b.calc.A.total; })[0];
+  var dearestA  = D.slice().sort(function (a, b) { return b.calc.A.total - a.calc.A.total; })[0];
+  var spreadA   = dearestA.calc.A.total - cheapestA.calc.A.total;
+  var byId      = N.byId;
+
+  /* ---------------- 結論タイル ---------------- */
+  $('tilesLead').innerHTML = 'A案（ねむりん＋サンバレー）で見ると、最安の <strong>' + cheapestA.tabDate + '（' + cheapestA.tabDow + '）発 '
+    + yen(cheapestA.calc.A.total) + '円</strong> と最高の <strong>' + dearestA.tabDate + '（' + dearestA.tabDow + '）発 '
+    + yen(dearestA.calc.A.total) + '円</strong> の差は <strong>' + yen(spreadA) + '円</strong>。'
+    + '固定費61,000円が全日程同じなので、差がつくのは宿泊料だけです。'
+    + '<strong>1万円で「休みを取らずに済む」か「紅葉のピーク」か「空いている週末」を買う</strong>、という選択になります。';
+
+  var tiles = [
+    { tone:'var(--s1)',       k:'Cheapest ／ 最安',      dep:byId('1009'),
+      p:'金曜泊が効いて宿泊料が最も安く、<strong>実費のまま目標15万円をクリア</strong>する唯一の日程。しかも 10/12（月・スポーツの日）が丸ごと予備日として残ります。' },
+    { tone:'var(--green-2)',  k:'Best balance ／ 総合',  dep:byId('1016'),
+      p:'3連休も紅葉ピークも外した通常週末。<strong>混雑が5日程で最小</strong>で、ねむりんの禁煙室やコテージを選べる可能性も最も高い日程です。' },
+    { tone:'var(--s2)',       k:'Best view ／ 紅葉',     dep:byId('1023'),
+      p:'那須高原一帯が<strong>紅葉ピーク</strong>。宿代は最も高くなりますが、それでも10/10発より安く、記念写真の背景は別物です。' }
+  ];
+  $('tilesBox').innerHTML = tiles.map(function (t) {
+    return '<div class="tile" style="--tone:' + t.tone + '">'
+      + '<p class="k">' + t.k + '</p>'
+      + '<p class="d">' + t.dep.tabDate + '（' + t.dep.tabDow + '）発</p>'
+      + '<p class="n">A案 ' + yen(t.dep.calc.A.total) + '円 ／ 実質 約' + yen(round100(t.dep.calc.A.real)) + '円</p>'
+      + '<p>' + t.p + '</p>'
+      + '<div class="links" style="margin-top:12px"><a href="index.html?d=' + t.dep.id + '">この日程の計画を見る →</a></div>'
+      + '</div>';
+  }).join('');
+
+  /* ---------------- グラフ ---------------- */
+  var tip = $('tip');
+  function showTip(e, html) {
+    tip.innerHTML = html;
+    tip.style.opacity = '1';
+    var pad = 14, w = tip.offsetWidth, h = tip.offsetHeight;
+    var x = Math.min(e.clientX + pad, window.innerWidth - w - 8);
+    var y = e.clientY - h - pad;
+    if (y < 8) y = e.clientY + pad;
+    tip.style.left = Math.max(8, x) + 'px';
+    tip.style.top = y + 'px';
+  }
+  function hideTip() { tip.style.opacity = '0'; }
+
+  /* 1本の棒。amount=棒の長さに使う値、label=棒の脇に出す文字 */
+  function bar(d, plan, cls, amount, scale, label) {
+    var pct = Math.min(100, amount / scale * 100);
+    return '<div class="bar ' + cls + '" tabindex="0"'
+      + ' data-dep="' + d.id + '" data-plan="' + plan + '"'
+      + ' aria-label="' + d.tabDate + '発 ' + plan + '案 ' + label + '">'
+      + '<i style="width:' + pct.toFixed(2) + '%"></i><b>' + label + '</b></div>';
+  }
+
+  function rowHtml(d, isBest, barsHtml) {
+    return '<div class="brow' + (isBest ? ' best' : '') + '">'
+      + '<div class="blabel">' + d.tabDate + '<small>' + d.tabDow + '発'
+      + (d.verified ? ' ・実測' : ' ・推定') + '</small></div>'
+      + '<div class="bars">' + barsHtml + '</div>'
+      + '</div>';
+  }
+
+  /* どちらのグラフの棒にも同じツールチップを付ける */
+  function wireTips(root) {
+    Array.prototype.forEach.call(root.querySelectorAll('.bar'), function (el) {
+      function content() {
+        var d = byId(el.dataset.dep), plan = el.dataset.plan, c = d.calc[plan];
+        var hotel = plan === 'A' ? d.calc.sunvalley : d.calc.epinard;
+        var gap = c[mode] - cheapest.calc[plan][mode];
+        return '<b>' + d.tabDate + '（' + d.tabDow + '）発</b> ／ ' + plan + '案'
+          + (d.verified ? '（実測）' : '（推定）') + '<br>'
+          + '実費 <b>' + yen(c.total) + '円</b>　ポイント還元後 <b>' + yen(round100(c.real)) + '円</b><br>'
+          + '宿泊 ' + yen(d.calc.nemurin.net + hotel.net) + '円 ＋ 固定費 ' + yen(N.FIXED_TOTAL) + '円<br>'
+          + '最安（' + cheapest.tabDate + '発・同プラン）との差 <b>' + (gap === 0 ? '±0' : '＋' + yen(gap)) + '円</b>';
+      }
+      el.addEventListener('mouseenter', function (e) { showTip(e, content()); });
+      el.addEventListener('mousemove', function (e) { showTip(e, content()); });
+      el.addEventListener('mouseleave', hideTip);
+      el.addEventListener('focus', function () {
+        var r = el.getBoundingClientRect();
+        showTip({ clientX: r.left + r.width / 2, clientY: r.top }, content());
+      });
+      el.addEventListener('blur', hideTip);
+    });
+  }
+
+  var cheapest = cheapestA;   /* A案の最安日程＝差額グラフの基準 */
+
+  function drawBars() {
+    var best = D.slice().sort(function (a, b) { return val(a, 'A') - val(b, 'A'); })[0];
+
+    $('bars').innerHTML = D.map(function (d) {
+      return rowHtml(d, d.id === best.id,
+          bar(d, 'A', 's1', val(d, 'A'), SCALE, yen(val(d, 'A')))
+        + bar(d, 'B', 's2', val(d, 'B'), SCALE, yen(val(d, 'B'))));
+    }).join('');
+    $('axisMax').textContent = yen(SCALE) + '円';
+    wireTips($('bars'));
+
+    /* --- 差額グラフ --- */
+    var baseA = val(best, 'A'), baseB = val(best, 'B');
+    var maxGap = 0;
+    D.forEach(function (d) {
+      maxGap = Math.max(maxGap, val(d, 'A') - baseA, val(d, 'B') - baseB);
+    });
+    var dScale = Math.max(2000, Math.ceil(maxGap / 2000) * 2000);
+
+    $('deltaBars').innerHTML = D.map(function (d) {
+      var ga = val(d, 'A') - baseA, gb = val(d, 'B') - baseB;
+      function lab(g) { return g === 0 ? '±0' : '＋' + yen(g) + '円'; }
+      return rowHtml(d, d.id === best.id,
+          bar(d, 'A', 's1', ga, dScale, lab(ga))
+        + bar(d, 'B', 's2', gb, dScale, lab(gb)));
+    }).join('');
+    $('deltaMax').textContent = '＋' + yen(dScale) + '円';
+    $('deltaSub').textContent = '総額はどれも似た水準なので、最安の '
+      + best.tabDate + '（' + best.tabDow + '）発を ±0円 としたときの上乗せ額だけを取り出しました'
+      + (mode === 'real' ? '（ポイント還元後で比較）' : '');
+    wireTips($('deltaBars'));
+  }
+
+  function setMode(m) {
+    mode = m;
+    $('btnTotal').setAttribute('aria-pressed', m === 'total' ? 'true' : 'false');
+    $('btnReal').setAttribute('aria-pressed', m === 'real' ? 'true' : 'false');
+    $('chartTitle').textContent = m === 'total' ? '実費の総額' : 'じゃらんポイント還元後の実質総額';
+    $('chartSub').textContent = m === 'total'
+      ? 'クーポン・早割を引いた、実際に支払う金額'
+      : '実費から、次の旅行に使えるじゃらんポイント（12%）を引いた金額';
+    drawBars();
+  }
+  $('btnTotal').addEventListener('click', function () { setMode('total'); });
+  $('btnReal').addEventListener('click', function () { setMode('real'); });
+  setMode('total');
+
+  /* ---------------- 読み取れること ---------------- */
+  var d1009 = byId('1009'), d1010 = byId('1010'), d1016 = byId('1016'), d1023 = byId('1023'), d1030 = byId('1030');
+  $('insights').innerHTML = [
+    ['最大差 ' + yen(spreadA) + '円',
+     'A案の最安（' + cheapestA.tabDate + '発 ' + yen(cheapestA.calc.A.total) + '円）と最高（' + dearestA.tabDate + '発 '
+     + yen(dearestA.calc.A.total) + '円）の差。3日間の旅行としては<strong>誤差に近い幅</strong>です。'],
+    ['A案 vs B案',
+     'どの出発日でも、A案（サンバレー）とB案（エピナール）の差は <strong>約2万円</strong>。'
+     + '<strong>出発日を動かすより、ホテルを選び直す方が2倍効く</strong>ということです。'],
+    ['15万円の壁',
+     '実費のまま目標15万円に収まるのは <strong>' + d1009.tabDate + '発のA案（' + yen(d1009.calc.A.total)
+     + '円）だけ</strong>。ポイント還元後の実質で見れば、A案は5日程すべてが15万円以内に収まります。'],
+    ['B案は20万円以内',
+     'B案（エピナール）は最も高い ' + d1010.tabDate + '発でも ' + yen(d1010.calc.B.total)
+     + '円で、<strong>上限20万円の範囲内</strong>。プールと100種バイキングに約2万円を払う価値があるかどうかの判断になります。'],
+    ['3連休プレミアム',
+     d1010.tabDate + '（土）発は、同じ内容で ' + d1016.tabDate + '（金）発より <strong>'
+     + yen(d1010.calc.A.total - d1016.calc.A.total) + '円高い</strong>。'
+     + 'これが「学校もお仕事も休まずに行ける」ことの値段です。']
+  ].map(function (r) { return '<li><span>' + r[0] + '</span><span>' + r[1] + '</span></li>'; }).join('');
+
+  /* ---------------- 明細表 ---------------- */
+  function buildTable() {
+    var head = '<thead><tr><th>項目</th>' + D.map(function (d) {
+      return '<th>' + d.tabDate + '<small>' + d.tabDow + '発</small>'
+        + '<span class="tag-est' + (d.verified ? ' tag-fix' : '') + '">' + (d.verified ? '実測' : '推定') + '</span></th>';
+    }).join('') + '</tr></thead>';
+
+    var rows = [];
+    function row(label, sub, fn, opts) {
+      opts = opts || {};
+      var vals = D.map(fn);
+      var min = Math.min.apply(null, vals);
+      var cls = opts.cls ? ' class="' + opts.cls + '"' : '';
+      rows.push('<tr' + cls + '><th scope="row">' + label + (sub ? '<small>' + sub + '</small>' : '') + '</th>'
+        + vals.map(function (v, i) {
+            var mark = (opts.best && v === min) ? ' class="best"' : (opts.neg ? ' class="neg"' : '');
+            return '<td' + mark + '>' + (opts.neg ? '−' : '') + yen(Math.abs(v)) + '</td>';
+          }).join('') + '</tr>');
+    }
+
+    row('ねむりん 宿泊料', '1泊目・クーポン前', function (d) { return d.calc.nemurin.gross; });
+    row('　じゃらん宿クーポン', '階段式（40,000円以上で7,500円）', function (d) { return d.calc.nemurin.coupon; }, { neg: true });
+    row('ねむりん 支払額', '', function (d) { return d.calc.nemurin.net; }, { best: true, cls: 'rule' });
+
+    row('サンバレー那須', '2泊目・クーポン3,000円適用後', function (d) { return d.calc.sunvalley.net; }, { best: true, cls: 'rule' });
+    row('エピナール那須', '2泊目・早割42（−10%）適用後', function (d) { return d.calc.epinard.net; }, { best: true });
+
+    rows.push('<tr class="rule"><th scope="row">固定費 6項目<small>ステーキ・那須ハイ・とりっくあーと・トレジャー・交通費・食事＆お土産</small></th>'
+      + D.map(function () { return '<td>' + yen(N.FIXED_TOTAL) + '</td>'; }).join('') + '</tr>');
+
+    row('A案 実費合計', 'ねむりん ＋ サンバレー ＋ 固定費', function (d) { return d.calc.A.total; }, { best: true, cls: 'rule sum' });
+    row('　じゃらんポイント', '還元率12%', function (d) { return d.calc.A.point; }, { neg: true });
+    row('A案 実質', 'ポイント還元後', function (d) { return round100(d.calc.A.real); }, { best: true });
+
+    row('B案 実費合計', 'ねむりん ＋ エピナール ＋ 固定費', function (d) { return d.calc.B.total; }, { best: true, cls: 'rule sum' });
+    row('　じゃらんポイント', '還元率12%', function (d) { return d.calc.B.point; }, { neg: true });
+    row('B案 実質', 'ポイント還元後', function (d) { return round100(d.calc.B.real); }, { best: true });
+
+    $('tbl').innerHTML = head + '<tbody>' + rows.join('') + '</tbody>';
+  }
+  buildTable();
+
+  /* ---------------- 選び方 ---------------- */
+  var picks = [
+    { q:'学校とお仕事を休みたくない', dep:d1010,
+      p:'選択肢は <strong>10/10（土）発</strong> ひとつだけです。3連休をまるごと使えます。ただし5日程で最も高く（A案 ' + yen(d1010.calc.A.total) + '円）、'
+      + 'ねむりんは<strong>残り1室・喫煙の別館ツイン</strong>しか空いていません。往復とも渋滞のピークにあたります。' },
+    { q:'とにかく安く抑えたい', dep:d1009,
+      p:'<strong>10/9（金）発</strong>。A案 ' + yen(d1009.calc.A.total) + '円で、実費のまま目標15万円をクリアします。'
+      + '10/10発より <strong>' + yen(d1010.calc.A.total - d1009.calc.A.total) + '円安い</strong>うえ、'
+      + '10/12（月・スポーツの日）が休養日として丸ごと残るのが地味に効きます。' },
+    { q:'空いているところでのんびりしたい', dep:d1016,
+      p:'<strong>10/16（金）発</strong>。3連休も紅葉ピークも外しているので、那須ハイの待ち時間・那須街道の渋滞・宿の混み具合すべてが最小。'
+      + 'ねむりんの<strong>禁煙室やコテージを選べる</strong>可能性も最も高く、A案 ' + yen(d1016.calc.A.total) + '円と価格も控えめです。' },
+    { q:'誕生日と20周年の写真を最高にしたい', dep:d1023,
+      p:'<strong>10/23（金）発</strong>。那須高原一帯が紅葉のピークで、つつじ吊橋や殺生石まわりの景色が一年で最も美しい週です。'
+      + 'A案 ' + yen(d1023.calc.A.total) + '円と5日程で最も宿代が高くなりますが、それでも10/10発より安く済みます。紅葉渋滞だけ覚悟を。' },
+    { q:'子どもが喜ぶ+αが欲しい', dep:d1030,
+      p:'<strong>10/30（金）発</strong>。2日目の 10/31 が<strong>ハロウィン当日</strong>で、那須ハイもイベント仕様になる時期です。'
+      + '麓の紅葉も見頃。A案 ' + yen(d1030.calc.A.total) + '円。ただし那須高原の11月上旬は朝の最低気温が5℃前後まで下がるので、防寒着は必須です。' },
+    { q:'ホテルのグレードを上げたい', dep:d1009,
+      p:'出発日を1日動かすより <strong>B案（エピナール那須）に切り替える方が影響は大きい</strong>（差は約2万円）。'
+      + '100種バイキングと通年営業の屋内温水プールが付き、どの出発日でも上限20万円には収まります。'
+      + '最も安く済むのは 10/9発の B案 ' + yen(d1009.calc.B.total) + '円です。' }
+  ];
+  $('picks').innerHTML = picks.map(function (p) {
+    return '<div class="pick"><p class="q">' + p.q + '</p>'
+      + '<h3>' + p.dep.tabDate + '（' + p.dep.tabDow + '）発</h3>'
+      + '<p>' + p.p + '</p>'
+      + '<div class="links" style="margin-top:12px"><a href="index.html?d=' + p.dep.id + '">この日程の計画を見る →</a></div>'
+      + '</div>';
+  }).join('');
+})();
+</script>
+
+</body>
+</html>
