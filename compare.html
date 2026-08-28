@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>那須 3日間 ── 出発日6パターンの費用比較</title>
-<meta name="description" content="10/9・10/10・10/16・10/23・10/30・11/6 発の那須2泊3日を、宿泊費・遊興費・交通費まで含めてまるごと比較。">
+<meta name="description" content="10/9・10/10・10/16・10/23・10/30・11/6 発の那須2泊3日を、じゃらんで全日程を実地調査して比較。">
 <meta name="theme-color" content="#14342b">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -145,7 +145,7 @@ td.neg{color:var(--rose)}
       <a href="#chart">グラフ</a>
       <a href="#table">明細表</a>
       <a href="#pick">選び方</a>
-      <a href="#model">推定の根拠</a>
+      <a href="#model">調査方法</a>
     </div>
   </nav>
 </div>
@@ -157,7 +157,7 @@ td.neg{color:var(--rose)}
   <div class="wrap">
     <div class="sec-head">
       <p class="sec-num">Bottom line</p>
-      <h2>結論 ── 差は約1.3万円、決め手は別のところ</h2>
+      <h2>結論 ── 3連休を1週ずらすと約3.2万円安い</h2>
       <p id="tilesLead"></p>
     </div>
     <div class="tiles" id="tilesBox"></div>
@@ -170,7 +170,7 @@ td.neg{color:var(--rose)}
     <div class="sec-head">
       <p class="sec-num">At a glance</p>
       <h2>6日程 × 2プランの総額</h2>
-      <p>棒は「3名・2泊3日の総額」です。宿泊料・ステーキ・遊興費・交通費・食費とお土産をすべて含みます。</p>
+      <p>棒は「3名・2泊3日の総額」です。宿泊料・ステーキ・遊興費・交通費・食費とお土産をすべて含みます。宿泊料は6日程すべて じゃらん の実測値。</p>
     </div>
 
     <div class="chartbox">
@@ -196,7 +196,7 @@ td.neg{color:var(--rose)}
       <div class="chart-head">
         <div>
           <h3 id="deltaTitle">最安日程との差額だけを見る</h3>
-          <p id="deltaSub">総額はどれも15〜18万円台で似通うので、上乗せ額だけを取り出したのがこちらです</p>
+          <p id="deltaSub">最安の日程を ±0円 としたときの上乗せ額だけを取り出しました</p>
         </div>
       </div>
       <div class="legend">
@@ -220,14 +220,14 @@ td.neg{color:var(--rose)}
     <div class="sec-head">
       <p class="sec-num">Line by line</p>
       <h2>明細表</h2>
-      <p>金額はすべて3名合計・税込。<strong>10/10（土）発だけが実測値</strong>で、ほかの4日程は推定です。宿泊料以外の6項目は出発日によらず同額なので、差がつくのは上の3行だけです。</p>
+      <p>金額はすべて3名合計・税込で、宿泊料は6日程すべて じゃらん の実測値です。宿泊料以外の6項目は出発日によらず同額なので、差がつくのは上の3行だけ。</p>
     </div>
     <div class="tblwrap">
       <table id="tbl"></table>
     </div>
     <p class="note" style="border-top:none;padding-left:2px">
-      じゃらんポイントは還元率12%。ねむりん・サンバレーはクーポン適用<strong>前</strong>の宿泊料に対して、
-      エピナールは早割適用<strong>後</strong>のプラン価格に対して付与される計算です（10/10発の実測値がこの計算式と一致することを確認しています）。
+      じゃらんポイントは画面表示の「加算予定ポイント」をそのまま使っています。<strong>還元率は日程ごとに大きく違い</strong>（12% → 2% → 15%）、
+      実質負担の順位は実費の順位と一致しません。
     </p>
   </div>
 </section>
@@ -238,77 +238,79 @@ td.neg{color:var(--rose)}
     <div class="sec-head">
       <p class="sec-num">How to choose</p>
       <h2>で、どれにする？</h2>
-      <p>6日程の総額差は最大でも約1.3万円（A案）。<strong>1万円で何を買うか</strong>という選択だと考えると決めやすくなります。</p>
+      <p>A案の総額は「3連休がらみの2日程」と「それ以外の4日程」で <strong>約3万円</strong> はっきり分かれます。まずどちらの組に入るかを決めるのが先です。</p>
     </div>
     <div class="picks" id="picks"></div>
 
     <div class="card" style="margin-top:16px">
       <p class="kicker">全日程に共通する前提</p>
       <ul class="spec" style="border-top:none;padding-top:2px">
-        <li><span>金曜発</span>10/9・10/16・10/23・10/30・11/6 はすべて<strong>金曜出発</strong>です。梗華ちゃんは学校を1日お休みする必要があります。10/10発だけが3連休を使って休まずに行ける日程。</li>
+        <li><span>金曜発</span>10/9・10/16・10/23・10/30・11/6 はすべて<strong>金曜出発</strong>です。娘は学校を1日お休みする必要があります。10/10発だけが3連休を使って休まずに行ける日程。</li>
         <li><span>固定費</span>那須ハイ 15,700円／とりっくあーとぴあ 6,100円／トレジャーストーンパーク 4,200円／ステーキ 5,700円／交通費 14,300円／食事・お土産 15,000円 ＝ <strong>合計61,000円</strong>。ここは出発日を変えても1円も動きません。</li>
         <li><span>ステーキ</span>ねむりんの牛ステーキ食べ放題（Cプラン1,900円×3名）は現地精算。全日程共通です。</li>
         <li><span>ふるさと納税</span>楽天トラベルのふるさと納税クーポン（寄付額の30%が戻る）を使う場合、この表のじゃらん価格とは別計算になります。どの日程でも同じように使えます。</li>
+        <li><span>残室</span>ねむりんは<strong>全日程で残1〜2室</strong>しかありません。6日程のどれを選ぶにしても、ボトルネックは常にねむりんです。日程が固まったらここから押さえてください。</li>
       </ul>
     </div>
   </div>
 </section>
 
-<!-- ============ MODEL ============ -->
+<!-- ============ METHOD ============ -->
 <section id="model">
   <div class="wrap">
     <div class="sec-head">
       <p class="sec-num">Method</p>
-      <h2>推定の根拠</h2>
-      <p><strong>実地調査したのは 10/10（土）発の1日程だけ</strong>です。残り4日程の宿泊料は、その実測値を基準に「曜日」と「那須高原の紅葉シーズン相場」の2つの係数を掛けて算出しています。予約前に必ず じゃらん で実際の金額を確認してください。</p>
+      <h2>調査方法</h2>
+      <p>6日程すべて、<strong>2026年8月28日 20:00 時点の じゃらんnet</strong> で日付を指定し、
+        <strong>大人2名＋小学生1名・1室</strong>の条件で実際に出てきたプランと料金を取得しています。
+        推定や按分は使っていません。空室と料金は動くので、予約前に各サイトで最新の金額をご確認ください。</p>
     </div>
 
     <div class="grid g2">
       <div class="card accent">
-        <p class="kicker">Step 1 ／ 基準値（実測）</p>
-        <h3 style="font-size:15px">2026年8月28日 じゃらん調査</h3>
+        <p class="kicker">Step 1 ／ 取得条件</p>
+        <h3 style="font-size:15px">じゃらん 日付指定プラン一覧</h3>
         <ul class="spec" style="border-top:none;padding-top:6px">
-          <li><span>ねむりん</span>10/10（土）泊 <strong>45,000円</strong>（ノンアルコール基本プラン・別館ツイン）</li>
-          <li><span>サンバレー</span>10/11（日・祝前）泊 <strong>63,855円</strong>（ガーデンスウィート メゾネット）</li>
-          <li><span>エピナール</span>10/11（日・祝前）泊 <strong>91,287円</strong>（和洋室《絆》・早割適用前の通常料金）</li>
+          <li><span>人数</span>大人2名＋小学生1名／1室・1泊（じゃらんの「小学生」区分）</li>
+          <li><span>対象</span>ねむりん 6泊分（10/9・10/10・10/16・10/23・10/30・11/6）＋
+            サンバレー／エピナール 各6泊分（10/10・10/11・10/17・10/24・10/31・11/7）＝ <strong>計18通り</strong></li>
+          <li><span>金額</span>じゃらん表示の3名合計（税込）。クーポンは<strong>その部屋で実際に取得できる額</strong>を差し引き</li>
+          <li><span>ポイント</span>画面に出ている「加算予定じゃらんポイント」をそのまま採用</li>
         </ul>
-        <p class="note">この3つだけが実際に空室と金額を確認した数字です。</p>
       </div>
 
       <div class="card">
-        <p class="kicker">Step 2 ／ 係数</p>
-        <h3 style="font-size:15px">曜日 × 紅葉シーズン</h3>
-        <div class="formula">
-          推定宿泊料 ＝ <em>土曜泊の基準額</em> × <em>曜日係数</em> × <em>紅葉係数</em><br>
-          （100円単位に丸め）
-        </div>
-        <ul class="spec" style="margin-top:14px">
-          <li><span>曜日</span>金曜泊 <strong>0.80</strong>／土曜泊 <strong>1.00</strong>／連休中日の日曜泊 <strong>1.06</strong></li>
-          <li><span>紅葉</span>10/9〜11週 <strong>1.00</strong>／10/16〜18週 <strong>1.03</strong>／10/23〜25週 <strong>1.08</strong>（那須高原のピーク）／10/30〜11/1週 <strong>1.04</strong>／11/6〜8週 <strong>0.97</strong>（紅葉が終わり冬需要が始まる前の端境期）</li>
+        <p class="kicker">Step 2 ／ どのプランを採ったか</p>
+        <ul class="spec" style="border-top:none;padding-top:6px">
+          <li><span>ねむりん</span>ノンアルコール基本プランの<strong>禁煙室で最安</strong>の部屋。禁煙が満室の日は理由を明記しています</li>
+          <li><span>サンバレー</span>「万里」中華＆和食バイキング × ガーデンスウィート メゾネット。
+            メゾネットが満室の日（10/10泊）は同じ万里プランの最安室</li>
+          <li><span>エピナール</span>【早期割引42】和洋中100種バイキング × 絆ファミリールーム。
+            それが満室の日（10/24泊・11/7泊）は<strong>2食付きで最安のプラン</strong></li>
         </ul>
-        <p class="note">サンバレー・エピナールの実測値は「連休中日の日曜泊」なので、まず 1.06 で割って土曜泊の基準額（サンバレー 60,200円／エピナール 86,100円）を出し、そこから各日程を計算しています。</p>
+        <p class="note">同じ部屋でも、飲み放題の内容が違う「ネムリン名物基本プラン」は一律3,000円高くなります。お酒を飲まないならノンアル版が最安です。</p>
       </div>
     </div>
 
     <div class="grid g2" style="margin-top:16px">
       <div class="card">
-        <p class="kicker">Step 3 ／ 割引の当てはめ</p>
+        <p class="kicker">調べて分かったこと</p>
         <ul class="spec" style="border-top:none;padding-top:2px">
-          <li><span>ねむりん</span>じゃらん宿クーポンは階段式。<strong>40,000円以上→7,500円／30,000円以上→5,000円／20,000円以上→3,000円</strong>で当てはめています。金曜泊は40,000円に届かないため、5,000円クーポンでの計算です。</li>
-          <li><span>サンバレー</span>宿クーポン 3,000円を全日程に適用。</li>
-          <li><span>エピナール</span>【早期割引42】で通常料金から −10%。宿クーポンの発行はありません。期限は各宿泊日の42日前（10/17泊＝9/5、10/24泊＝9/12、10/31泊＝9/19、11/7泊＝9/26）。</li>
-          <li><span>ポイント</span>じゃらん 12%。ねむりん・サンバレーはクーポン前の宿泊料、エピナールは早割後のプラン価格に対して計算。</li>
+          <li><span>宿は定額</span>ねむりんもサンバレーも、<strong>3連休以外はどの週末も同じ料金</strong>でした（ねむりん34,000円／サンバレー51,975円）。曜日や紅葉で細かく変動するわけではありません</li>
+          <li><span>連休だけ別</span>跳ね上がるのは3連休がらみの2泊だけ。ねむりん 10/10泊が45,000円、サンバレー 10/11泊が63,855円、10/10泊にいたってはメゾネットが満室です</li>
+          <li><span>クーポン</span>連休の2日程には<strong>サンバレーのクーポンが出ていません</strong>。他の4日程には11,000円分が出ており、これだけで差が開きます</li>
+          <li><span>ポイント</span>還元率が日程でまるで違います。ねむりん・サンバレーとも 10/16泊までは12%、10/17〜10/31泊は2%、そしてサンバレー 11/7泊だけ15%</li>
         </ul>
       </div>
 
       <div class="card">
-        <p class="kicker">この推定の弱いところ</p>
+        <p class="kicker">この数字の弱いところ</p>
         <ul class="spec" style="border-top:none;padding-top:2px">
-          <li><span>空室</span>推定できるのは<strong>価格だけ</strong>です。実際にその部屋が空いているかは各サイトで確認が必要。特に10/23発は紅葉ピークで早く埋まります。</li>
-          <li><span>冬料金</span>11/6発は紅葉と冬の間の端境期という前提で 0.97 を当てていますが、宿によっては11月から別の料金体系（冬季プラン）に切り替わることがあります。6日程のなかで推定の幅が最も大きいのはこの日程です。</li>
-          <li><span>クーポン</span>じゃらんのクーポンは配布時期・枚数・条件が頻繁に変わります。表の金額は「今と同水準のクーポンが取れたら」という前提です。</li>
-          <li><span>プラン</span>10/10以外の日程では、同じプランが設定されていない可能性があります（特にサンバレーの「秋の栃木那須巡り」は期間限定プラン）。</li>
-          <li><span>差し替え</span>実際の見積りが出たら <code>data.js</code> の <code>rates</code> を書き換えるだけで、このページと計画ページの数字がすべて自動で更新されます。</li>
+          <li><span>時点</span>あくまで<strong>8/28 20:00 のスナップショット</strong>です。空室は日々動きます。特にねむりんは全日程で残1〜2室しかありません</li>
+          <li><span>クーポン</span>クーポンには配布枚数と利用条件（最低金額など）があります。表の金額は「今出ているクーポンを全部取得できたら」という前提です</li>
+          <li><span>ポイント</span>還元率キャンペーンは期間限定です。特に11/7泊の15%は変わる可能性があります</li>
+          <li><span>混雑・紅葉</span>この2つだけは実測ではなく、例年の傾向からの見込みです</li>
+          <li><span>更新</span>再調査したら <code>data.js</code> の <code>stay</code> を書き換えるだけで、両ページの数字がすべて追従します</li>
         </ul>
       </div>
     </div>
@@ -348,21 +350,27 @@ td.neg{color:var(--rose)}
   var byId      = N.byId;
 
   /* ---------------- 結論タイル ---------------- */
-  $('tilesLead').innerHTML = 'A案（ねむりん＋サンバレー）で見ると、最安の <strong>' + cheapestA.tabDate + '（' + cheapestA.tabDow + '）発 '
-    + yen(cheapestA.calc.A.total) + '円</strong> と最高の <strong>' + dearestA.tabDate + '（' + dearestA.tabDow + '）発 '
-    + yen(dearestA.calc.A.total) + '円</strong> の差は <strong>' + yen(spreadA) + '円</strong>。'
-    + '固定費61,000円が全日程同じなので、差がつくのは宿泊料だけです。'
-    + '<strong>この' + yen(spreadA) + '円で「休みを取らずに済む」か「紅葉のピーク」か「10月の暖かさ」を買う</strong>、という選択になります。';
+  $('tilesLead').innerHTML = 'A案（ねむりん＋サンバレー）の総額は、'
+    + '<strong>3連休がらみの2日程（10/9発 ' + yen(byId('1009').calc.A.total) + '円・10/10発 '
+    + yen(byId('1010').calc.A.total) + '円）</strong>と、'
+    + '<strong>それを外した4日程（127,175〜129,175円）</strong>にきれいに分かれました。その差は約3万円。'
+    + '固定費61,000円はどの日程も同じで、宿泊料だけがこう動きます。'
+    + '連休を外した4日程はどれも<strong>目標15万円を2万円以上下回る</strong>ので、'
+    + 'そこから先は「紅葉」「ポイント還元率」「エピナールが取れるか」で選ぶことになります。';
 
   var tiles = [
-    { tone:'var(--s1)',       k:'Cheapest ／ 最安・最も空いている', dep:byId('1106'),
-      p:'紅葉が終わり冬需要が始まる前の<strong>端境期</strong>。宿代が6日程で最も安く、混雑も部屋の取りやすさも一番有利です。'
-        + '引き換えに払うのは寒さ（最低2〜5℃）。那須ハイで丸1日屋外になる点だけ覚悟が要ります。' },
-    { tone:'var(--green-2)',  k:'Best balance ／ 総合',  dep:byId('1016'),
-      p:'3連休も紅葉ピークも外した通常週末。<strong>10月の暖かさを保ったまま、混雑と価格を下げられる</strong>のがこの日程です。'
-        + 'ねむりんの禁煙室やコテージも狙えます。' },
-    { tone:'var(--s2)',       k:'Best view ／ 紅葉',     dep:byId('1023'),
-      p:'那須高原一帯が<strong>紅葉ピーク</strong>。金曜発のなかでは宿代が最も高くなりますが、それでも10/10発より安く、記念写真の背景は別物です。' }
+    { tone:'var(--s1)',      k:'Best overall ／ 総合', dep:byId('1016'),
+      p:'最安タイの <strong>127,175円</strong>。しかも6日程で唯一、'
+        + '<strong>ねむりん禁煙室・サンバレーのメゾネット・エピナールの絆＋早割42 が全部そろって取れる</strong>日程です。'
+        + 'じゃらんポイントも12%が効きます（10/23発以降は2%）。ねむりんが残1室なのだけが弱点。' },
+    { tone:'var(--green-2)', k:'Cheapest net ／ 実質最安', dep:byId('1106'),
+      p:'実費は最安タイ、そのうえ<strong>サンバレーのポイント還元がこの日だけ15%</strong>。'
+        + '実質負担 <strong>118,699円</strong> は2位に約7,000円差をつけた断然の最安です。'
+        + '引き換えに、寒さ（最低2〜5℃）とエピナールが満室という2点を飲む必要があります。' },
+    { tone:'var(--s2)',      k:'Best view ／ 紅葉', dep:byId('1023'),
+      p:'那須高原一帯が<strong>紅葉ピーク</strong>。A案 129,175円で、10/10発より29,680円安く収まります。'
+        + 'ただし<strong>エピナールは絆も早割も満室</strong>、ねむりんも別館ツインの禁煙室は埋まっていて、'
+        + '禁煙なら本館和洋室（36,000円）になります。' }
   ];
   $('tilesBox').innerHTML = tiles.map(function (t) {
     return '<div class="tile" style="--tone:' + t.tone + '">'
@@ -399,8 +407,7 @@ td.neg{color:var(--rose)}
 
   function rowHtml(d, isBest, barsHtml) {
     return '<div class="brow' + (isBest ? ' best' : '') + '">'
-      + '<div class="blabel">' + d.tabDate + '<small>' + d.tabDow + '発'
-      + (d.verified ? ' ・実測' : ' ・推定') + '</small></div>'
+      + '<div class="blabel">' + d.tabDate + '<small>' + d.tabDow + '発</small></div>'
       + '<div class="bars">' + barsHtml + '</div>'
       + '</div>';
   }
@@ -412,8 +419,7 @@ td.neg{color:var(--rose)}
         var d = byId(el.dataset.dep), plan = el.dataset.plan, c = d.calc[plan];
         var hotel = plan === 'A' ? d.calc.sunvalley : d.calc.epinard;
         var gap = c[mode] - cheapest.calc[plan][mode];
-        return '<b>' + d.tabDate + '（' + d.tabDow + '）発</b> ／ ' + plan + '案'
-          + (d.verified ? '（実測）' : '（推定）') + '<br>'
+        return '<b>' + d.tabDate + '（' + d.tabDow + '）発</b> ／ ' + plan + '案<br>'
           + '実費 <b>' + yen(c.total) + '円</b>　ポイント還元後 <b>' + yen(round100(c.real)) + '円</b><br>'
           + '宿泊 ' + yen(d.calc.nemurin.net + hotel.net) + '円 ＋ 固定費 ' + yen(N.FIXED_TOTAL) + '円<br>'
           + '最安（' + cheapest.tabDate + '発・同プラン）との差 <b>' + (gap === 0 ? '±0' : '＋' + yen(gap)) + '円</b>';
@@ -433,9 +439,11 @@ td.neg{color:var(--rose)}
 
   function drawBars() {
     var best = D.slice().sort(function (a, b) { return val(a, 'A') - val(b, 'A'); })[0];
+    var bestVal = val(best, 'A');                 /* 最安が複数日程で同額になるため値で判定 */
+    function isBest(d) { return val(d, 'A') === bestVal; }
 
     $('bars').innerHTML = D.map(function (d) {
-      return rowHtml(d, d.id === best.id,
+      return rowHtml(d, isBest(d),
           bar(d, 'A', 's1', val(d, 'A'), SCALE, yen(val(d, 'A')))
         + bar(d, 'B', 's2', val(d, 'B'), SCALE, yen(val(d, 'B'))));
     }).join('');
@@ -453,13 +461,15 @@ td.neg{color:var(--rose)}
     $('deltaBars').innerHTML = D.map(function (d) {
       var ga = val(d, 'A') - baseA, gb = val(d, 'B') - baseB;
       function lab(g) { return g === 0 ? '±0' : '＋' + yen(g) + '円'; }
-      return rowHtml(d, d.id === best.id,
+      return rowHtml(d, isBest(d),
           bar(d, 'A', 's1', ga, dScale, lab(ga))
         + bar(d, 'B', 's2', gb, dScale, lab(gb)));
     }).join('');
     $('deltaMax').textContent = '＋' + yen(dScale) + '円';
-    $('deltaSub').textContent = '総額はどれも似た水準なので、最安の '
-      + best.tabDate + '（' + best.tabDow + '）発を ±0円 としたときの上乗せ額だけを取り出しました'
+    var ties = D.filter(isBest);
+    $('deltaSub').textContent = 'A案が最安の '
+      + ties.map(function (t) { return t.tabDate; }).join('・') + '発'
+      + (ties.length > 1 ? '（同額）' : '') + ' を ±0円 としたときの上乗せ額です'
       + (mode === 'real' ? '（ポイント還元後で比較）' : '');
     wireTips($('deltaBars'));
   }
@@ -482,31 +492,40 @@ td.neg{color:var(--rose)}
   var d1009 = byId('1009'), d1010 = byId('1010'), d1016 = byId('1016'),
       d1023 = byId('1023'), d1030 = byId('1030'), d1106 = byId('1106');
   var underTarget = D.filter(function (d) { return d.calc.A.total <= N.BUDGET.target; });
+  var offPeak = D.filter(function (x) { return x.id !== '1009' && x.id !== '1010'; });
+  var offMin = Math.min.apply(null, offPeak.map(function (x) { return x.calc.A.total; }));
+
   $('insights').innerHTML = [
-    ['最大差 ' + yen(spreadA) + '円',
-     'A案の最安（' + cheapestA.tabDate + '発 ' + yen(cheapestA.calc.A.total) + '円）と最高（' + dearestA.tabDate + '発 '
-     + yen(dearestA.calc.A.total) + '円）の差。3日間の旅行としては<strong>誤差に近い幅</strong>です。'],
-    ['A案 vs B案',
-     'どの出発日でも、A案（サンバレー）とB案（エピナール）の差は <strong>約2万円</strong>。'
-     + '<strong>出発日を動かすより、ホテルを選び直す方が2倍効く</strong>ということです。'],
-    ['15万円の壁',
-     '実費のまま目標15万円に収まるのは <strong>' + underTarget.map(function (d) {
-       return d.tabDate + '発（' + yen(d.calc.A.total) + '円）';
-     }).join('と') + ' のA案</strong>。ポイント還元後の実質で見れば、A案は6日程すべてが15万円以内に収まります。'],
-    ['B案は20万円以内',
-     'B案（エピナール）は最も高い ' + d1010.tabDate + '発でも ' + yen(d1010.calc.B.total)
-     + '円で、<strong>上限20万円の範囲内</strong>。プールと100種バイキングに約2万円を払う価値があるかどうかの判断になります。'],
     ['3連休プレミアム',
-     d1010.tabDate + '（土）発は、同じ内容で ' + d1016.tabDate + '（金）発より <strong>'
-     + yen(d1010.calc.A.total - d1016.calc.A.total) + '円高い</strong>。'
-     + 'これが「学校もお仕事も休まずに行ける」ことの値段です。']
+     '連休を外した4日程はA案 <strong>' + yen(offMin) + '〜' + yen(Math.max.apply(null, offPeak.map(function (x) { return x.calc.A.total; })))
+     + '円</strong>。10/10発（' + yen(d1010.calc.A.total) + '円）との差は最大 <strong>'
+     + yen(d1010.calc.A.total - offMin) + '円</strong>で、これが「学校もお仕事も休まずに行ける」ことの値段です。'],
+    ['宿は連休以外どこも同額',
+     'ねむりんは連休の10/10泊だけ45,000円で、<strong>残り5泊はすべて34,000円</strong>（10/23発の禁煙室のみ36,000円）。'
+     + 'サンバレーも10/11泊 63,855円・10/10泊 69,795円に対し、<strong>他の4泊はすべて51,975円</strong>。'
+     + '曜日や紅葉で細かく動くのではなく、連休かどうかだけで決まっていました。'],
+    ['クーポンの有無が効く',
+     '連休の2日程は<strong>サンバレーのクーポンが発行されていません</strong>。他の4日程には11,000円分が出ており、'
+     + '宿の定価差（約1.2〜1.8万円）にこの1.1万円が上乗せされる形で差が開きます。'],
+    ['ポイント還元率は日程で激変',
+     '10/16発までは12%（A案で ' + yen(d1016.calc.A.point) + 'pt）、10/23発・10/30発は2%（約1,700pt）、'
+     + '<strong>11/6発だけサンバレーが15%</strong>で ' + yen(d1106.calc.A.point) + 'pt。'
+     + '実費が同じ127,175円でも、実質は 11/6発 ' + yen(d1106.calc.A.real) + '円 と 10/30発 '
+     + yen(d1030.calc.A.real) + '円 で <strong>' + yen(d1030.calc.A.real - d1106.calc.A.real) + '円</strong>違います。'],
+    ['B案が取れない日がある',
+     'エピナールの<strong>絆ファミリールーム＋早割42 が確保できるのは 10/9・10/10・10/16・10/30発の4日程だけ</strong>。'
+     + '10/23発（10/24泊）と11/6発（11/7泊）はほぼ満室で、2食付きは「部屋おまかせ・夕食遅め」の訳ありプラン '
+     + yen(byId('1023').calc.epinard.net) + '円しか残っていません。'],
+    ['A案 vs B案',
+     'どの出発日でも、A案とB案の差は <strong>約3.2〜4.1万円</strong>。'
+     + '<strong>出発日を動かすより、ホテルを選び直す方が効きます。</strong>'
+     + 'B案が最も安いのは 10/16発 ' + yen(d1016.calc.B.total) + '円です。']
   ].map(function (r) { return '<li><span>' + r[0] + '</span><span>' + r[1] + '</span></li>'; }).join('');
 
   /* ---------------- 明細表 ---------------- */
   function buildTable() {
     var head = '<thead><tr><th>項目</th>' + D.map(function (d) {
-      return '<th>' + d.tabDate + '<small>' + d.tabDow + '発</small>'
-        + '<span class="tag-est' + (d.verified ? ' tag-fix' : '') + '">' + (d.verified ? '実測' : '推定') + '</span></th>';
+      return '<th>' + d.tabDate + '<small>' + d.tabDow + '発</small></th>';
     }).join('') + '</tr></thead>';
 
     var rows = [];
@@ -516,28 +535,41 @@ td.neg{color:var(--rose)}
       var min = Math.min.apply(null, vals);
       var cls = opts.cls ? ' class="' + opts.cls + '"' : '';
       rows.push('<tr' + cls + '><th scope="row">' + label + (sub ? '<small>' + sub + '</small>' : '') + '</th>'
-        + vals.map(function (v, i) {
+        + vals.map(function (v) {
             var mark = (opts.best && v === min) ? ' class="best"' : (opts.neg ? ' class="neg"' : '');
-            return '<td' + mark + '>' + (opts.neg ? '−' : '') + yen(Math.abs(v)) + '</td>';
+            return '<td' + mark + '>' + (opts.neg && v ? '−' : '') + yen(Math.abs(v)) + '</td>';
           }).join('') + '</tr>');
     }
+    function textRow(label, sub, fn, cls) {
+      rows.push('<tr' + (cls ? ' class="' + cls + '"' : '') + '><th scope="row">' + label
+        + (sub ? '<small>' + sub + '</small>' : '') + '</th>'
+        + D.map(function (d) { return '<td>' + fn(d) + '</td>'; }).join('') + '</tr>');
+    }
 
+    textRow('ねむりん 部屋', '実際に空いていた最安室（禁煙優先）',
+            function (d) { return d.calc.nemurin.room.replace('ルーム', ''); });
     row('ねむりん 宿泊料', '1泊目・クーポン前', function (d) { return d.calc.nemurin.gross; });
-    row('　じゃらん宿クーポン', '階段式（40,000円以上で7,500円）', function (d) { return d.calc.nemurin.coupon; }, { neg: true });
+    row('　取得できるクーポン', '宿泊施設＋じゃらんの併用', function (d) { return d.calc.nemurin.coupon; }, { neg: true });
     row('ねむりん 支払額', '', function (d) { return d.calc.nemurin.net; }, { best: true, cls: 'rule' });
 
-    row('サンバレー那須', '2泊目・クーポン3,000円適用後', function (d) { return d.calc.sunvalley.net; }, { best: true, cls: 'rule' });
-    row('エピナール那須', '2泊目・早割42（−10%）適用後', function (d) { return d.calc.epinard.net; }, { best: true });
+    row('サンバレー那須', '2泊目・クーポン前', function (d) { return d.calc.sunvalley.gross; }, { cls: 'rule' });
+    row('　取得できるクーポン', '連休の2日程は発行なし', function (d) { return d.calc.sunvalley.coupon; }, { neg: true });
+    row('サンバレー 支払額', '', function (d) { return d.calc.sunvalley.net; }, { best: true });
+
+    textRow('エピナール プラン', '絆＋早割42 が取れるか', function (d) {
+      return d.epinardDeadline === '—' ? '<span style="color:var(--rose)">満室→訳あり</span>' : '絆＋早割42';
+    }, 'rule');
+    row('エピナール 支払額', '2泊目・クーポン発行なし', function (d) { return d.calc.epinard.net; }, { best: true });
 
     rows.push('<tr class="rule"><th scope="row">固定費 6項目<small>ステーキ・那須ハイ・とりっくあーと・トレジャー・交通費・食事＆お土産</small></th>'
       + D.map(function () { return '<td>' + yen(N.FIXED_TOTAL) + '</td>'; }).join('') + '</tr>');
 
     row('A案 実費合計', 'ねむりん ＋ サンバレー ＋ 固定費', function (d) { return d.calc.A.total; }, { best: true, cls: 'rule sum' });
-    row('　じゃらんポイント', '還元率12%', function (d) { return d.calc.A.point; }, { neg: true });
+    row('　じゃらんポイント', '還元率は日程ごとに違う', function (d) { return d.calc.A.point; }, { neg: true });
     row('A案 実質', 'ポイント還元後', function (d) { return round100(d.calc.A.real); }, { best: true });
 
     row('B案 実費合計', 'ねむりん ＋ エピナール ＋ 固定費', function (d) { return d.calc.B.total; }, { best: true, cls: 'rule sum' });
-    row('　じゃらんポイント', '還元率12%', function (d) { return d.calc.B.point; }, { neg: true });
+    row('　じゃらんポイント', '還元率は日程ごとに違う', function (d) { return d.calc.B.point; }, { neg: true });
     row('B案 実質', 'ポイント還元後', function (d) { return round100(d.calc.B.real); }, { best: true });
 
     $('tbl').innerHTML = head + '<tbody>' + rows.join('') + '</tbody>';
@@ -547,38 +579,40 @@ td.neg{color:var(--rose)}
   /* ---------------- 選び方 ---------------- */
   var picks = [
     { q:'学校とお仕事を休みたくない', dep:d1010,
-      p:'選択肢は <strong>10/10（土）発</strong> ひとつだけです。3連休をまるごと使えます。ただし6日程で最も高く（A案 ' + yen(d1010.calc.A.total) + '円）、'
-      + 'ねむりんは<strong>残り1室・喫煙の別館ツイン</strong>しか空いていません。往復とも渋滞のピークにあたります。' },
+      p:'選択肢は <strong>10/10（土）発</strong> ひとつだけです。3連休をまるごと使えます。'
+      + 'ただしA案 ' + yen(d1010.calc.A.total) + '円は6日程で最も高く、連休を外した日程より <strong>約3.2万円</strong> 余計にかかります。'
+      + 'しかも<strong>ねむりんは残1室・喫煙の別館ツインのみ</strong>。子ども連れで喫煙室は避けたいところですが、他に空きがありません。' },
 
-    { q:'とにかく安く、空いているところで', dep:d1106,
-      p:'<strong>11/6（金）発</strong>。紅葉が終わって冬需要が始まる前の端境期で、A案 ' + yen(d1106.calc.A.total) + '円と6日程で最安。'
-      + '10/10発より <strong>' + yen(d1010.calc.A.total - d1106.calc.A.total) + '円安く</strong>、'
-      + '那須ハイの待ち時間も那須街道の渋滞も一年で最も軽い時期です。寒さ（最低2〜5℃）だけが代償。'
-      + '寒い時期ほど温泉は効くので、貸切風呂と湯めぐりが目的ならむしろ狙い目。' },
+    { q:'総合点でいちばん良いものを', dep:d1016,
+      p:'<strong>10/16（金）発</strong>。A案 ' + yen(d1016.calc.A.total) + '円は最安タイで、'
+      + '<strong>ねむりんの禁煙室・サンバレーのメゾネット・エピナールの絆＋早割42 が全部そろって取れる唯一の日程</strong>です。'
+      + 'ポイントも12%が効きます（10/23発以降は2%）。ねむりんの禁煙室が<strong>残1室</strong>なので、決めたらすぐ押さえてください。' },
 
-    { q:'3連休を絡めたい・でも安く', dep:d1009,
-      p:'<strong>10/9（金）発</strong>。A案 ' + yen(d1009.calc.A.total) + '円で、実費のまま目標15万円をクリアします。'
-      + '金曜を1日休むだけで、10/11（日）に帰ってきて <strong>10/12（月・スポーツの日）が丸ごと休養日として残る</strong>のが効きます。'
-      + '10/10（土）が3連休初日で下りが最も渋滞する点だけ注意。' },
+    { q:'実質の負担をいちばん軽くしたい', dep:d1106,
+      p:'<strong>11/6（金）発</strong>。実費は最安タイの ' + yen(d1106.calc.A.total) + '円、'
+      + 'そのうえ<strong>サンバレーのポイント還元がこの日だけ15%</strong>で ' + yen(d1106.calc.A.point) + 'pt 戻ります。'
+      + '実質 ' + yen(d1106.calc.A.real) + '円 は2位に約7,000円差の断然最安。那須ハイも道路も一年で最も空いています。'
+      + '代償は寒さ（最低2〜5℃）と、エピナールが満室でB案が選べないこと。' },
 
-    { q:'10月の気候のまま、混雑を避けたい', dep:d1016,
-      p:'<strong>10/16（金）発</strong>。3連休も紅葉ピークも外した通常週末で、A案 ' + yen(d1016.calc.A.total) + '円。'
-      + '11/6発ほど安くも空いてもいませんが、<strong>まだ10月の暖かさが残っている</strong>のが違いです。'
-      + '那須ハイで丸1日過ごすことを考えると、この差は小さくありません。ねむりんの禁煙室やコテージも狙えます。' },
+    { q:'3連休を絡めたい', dep:d1009,
+      p:'<strong>10/9（金）発</strong>。金曜を1日休むだけで、10/11（日）に帰って <strong>10/12（月・スポーツの日）が丸ごと休養日として残ります</strong>。'
+      + 'ねむりんも34,000円・禁煙室が残2で取りやすい。ただし<strong>2泊目が連休初日の土曜</strong>になるため'
+      + 'サンバレーが 69,795円（他の週末より約1.8万円高い）まで上がり、A案は ' + yen(d1009.calc.A.total) + '円になります。' },
 
     { q:'誕生日と20周年の写真を最高にしたい', dep:d1023,
       p:'<strong>10/23（金）発</strong>。那須高原一帯が紅葉のピークで、つつじ吊橋や殺生石まわりの景色が一年で最も美しい週です。'
-      + 'A案 ' + yen(d1023.calc.A.total) + '円と金曜発のなかでは最も宿代が高くなりますが、それでも10/10発より安く済みます。紅葉渋滞だけ覚悟を。' },
+      + 'A案 ' + yen(d1023.calc.A.total) + '円と、10/10発より29,680円安く済みます。'
+      + 'ただし<strong>エピナールは絆も早割も満室</strong>、ねむりんも別館ツインの禁煙室が埋まっていて禁煙なら本館和洋室（36,000円）。紅葉渋滞も覚悟を。' },
 
     { q:'子どもが喜ぶ+αが欲しい', dep:d1030,
       p:'<strong>10/30（金）発</strong>。2日目の 10/31 が<strong>ハロウィン当日</strong>で、那須ハイもイベント仕様になる時期です。'
-      + '麓の紅葉も見頃。A案 ' + yen(d1030.calc.A.total) + '円。11/6発ほどではないものの朝の冷え込みは始まっているので、防寒着は用意してください。' },
+      + 'A案 ' + yen(d1030.calc.A.total) + '円と最安タイで、<strong>ねむりんの部屋の選択肢が6日程で最も広い</strong>'
+      + '（別館ツイン禁煙が残2、コテージ2棟と本館和洋室も空き）。B案の絆＋早割42も取れます。' },
 
-    { q:'ホテルのグレードを上げたい', dep:d1106,
-      p:'出発日を動かすより <strong>B案（エピナール那須）に切り替える方が影響は大きい</strong>（差は約2万円）。'
-      + '100種バイキングと通年営業の屋内温水プールが付き、どの出発日でも上限20万円には収まります。'
-      + '最も安く済むのは 11/6発の B案 ' + yen(d1106.calc.B.total) + '円で、これは10/10発のA案（' + yen(d1010.calc.A.total) + '円）と'
-      + Math.abs(d1106.calc.B.total - d1010.calc.A.total).toLocaleString('ja-JP') + '円しか違いません。' }
+    { q:'ホテルのグレードを上げたい', dep:d1016,
+      p:'B案（エピナール那須）は100種バイキングと通年営業の屋内温水プール付き。A案との差は<strong>約3.2〜4.1万円</strong>で、'
+      + '出発日を動かすより効きます。ただし<strong>絆ファミリールーム＋早割42 が取れるのは 10/9・10/10・10/16・10/30発の4日程だけ</strong>。'
+      + '最も安いのは <strong>10/16発の ' + yen(d1016.calc.B.total) + '円</strong> で、上限20万円にも収まります。' }
   ];
   $('picks').innerHTML = picks.map(function (p) {
     return '<div class="pick"><p class="q">' + p.q + '</p>'
