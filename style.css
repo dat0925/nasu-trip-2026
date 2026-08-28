@@ -234,7 +234,7 @@ html{scroll-padding-top:128px}
   flex:0 0 auto;font-size:10px;font-weight:900;letter-spacing:.16em;
   color:var(--ink-3);writing-mode:horizontal-tb;
 }
-.tabs{display:flex;gap:6px;overflow-x:auto;scrollbar-width:none;flex:1 1 auto;padding:2px 0}
+.tabs{position:relative;display:flex;gap:6px;overflow-x:auto;scrollbar-width:none;flex:1 1 auto;padding:2px 0;scroll-behavior:smooth}
 .tabs::-webkit-scrollbar{display:none}
 .tab{
   flex:0 0 auto;display:flex;flex-direction:column;align-items:center;

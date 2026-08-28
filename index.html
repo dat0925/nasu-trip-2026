@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>那須 3日間 ── 出発日5パターン比較</title>
-<meta name="description" content="梗華の誕生日・粧子の誕生日・結婚20周年を兼ねた那須2泊3日の旅行計画。10/9・10/10・10/16・10/23・10/30 の5つの出発日をタブで切り替えて比較できます。">
+<title>那須 3日間 ── 出発日6パターン比較</title>
+<meta name="description" content="梗華の誕生日・粧子の誕生日・結婚20周年を兼ねた那須2泊3日の旅行計画。10/9・10/10・10/16・10/23・10/30・11/6 の6つの出発日をタブで切り替えて比較できます。">
 <meta name="theme-color" content="#14342b">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -41,7 +41,7 @@
       <a href="#plan">行程</a>
       <a href="#budget">予算</a>
       <a href="#links">リンク集</a>
-      <a class="cmp" href="compare.html">5日程の費用比較 →</a>
+      <a class="cmp" href="compare.html">6日程の費用比較 →</a>
     </div>
   </nav>
 </div>
@@ -321,7 +321,7 @@
       </ul>
       <p class="note">※ ふるさと納税クーポンは楽天トラベル予約が対象です。じゃらんの安さ＋ポイントと、楽天のふるさと納税クーポンのどちらが得かは、寄付枠の余りと自己負担2,000円をどう見るかで変わります。</p>
       <div class="links">
-        <a class="primary" href="compare.html">5日程の費用をまとめて比較 →</a>
+        <a class="primary" href="compare.html">6日程の費用をまとめて比較 →</a>
         <a href="https://travel.rakuten.co.jp/special/furusato/" target="_blank" rel="noopener">楽天ふるさと納税クーポンとは</a>
       </div>
     </div>
@@ -395,7 +395,7 @@
   <div class="wrap">
     <p>調査日：2026年8月28日。料金・空室は変動します。予約前に各サイトで最新の金額をご確認ください。</p>
     <p>価格はすべて 大人2名＋小学3年生（じゃらん「小学生」区分）1名・1室の税込総額です。</p>
-    <p><strong>10/10（土）発のみ実地調査の確定値</strong>で、10/9・10/16・10/23・10/30 発は曜日・連休・紅葉シーズンから割り出した<strong>推定値</strong>です。<a href="compare.html">費用比較ページ</a>に推定の根拠をまとめています。</p>
+    <p><strong>10/10（土）発のみ実地調査の確定値</strong>で、10/9・10/16・10/23・10/30・11/6 発は曜日・連休・紅葉シーズンから割り出した<strong>推定値</strong>です。<a href="compare.html">費用比較ページ</a>に推定の根拠をまとめています。</p>
   </div>
 </footer>
 
@@ -509,7 +509,7 @@
     if (dep.verified) {
       $('estbar').className = 'estbar ok';
       $('estbar').innerHTML = '<b>確定値</b><span>この日程の宿泊料金は 2026年8月28日 に じゃらん・楽天トラベル・JTB で'
-        + '実際に空室と金額を確認した数字です。5日程のなかで唯一の実測値。</span>';
+        + '実際に空室と金額を確認した数字です。6日程のなかで唯一の実測値。</span>';
     } else {
       $('estbar').className = 'estbar';
       $('estbar').innerHTML = '<b>推定値</b><span>この日程の<strong>宿泊料金は推定です</strong>。実地調査した 10/10（土）発の確定値を基準に、'
@@ -631,6 +631,14 @@
       b.tabIndex = on ? 0 : -1;
     });
     render(dep);
+
+    /* タブが多くて横スクロールするとき、選択中のタブを見える位置へ寄せる */
+    var box = $('tabs');
+    var active = buttons.filter(function (b) { return b.dataset.id === dep.id; })[0];
+    if (box && active && box.scrollWidth > box.clientWidth) {
+      box.scrollLeft = active.offsetLeft - (box.clientWidth - active.offsetWidth) / 2;
+    }
+
     if (push) {
       try {
         history.replaceState(null, '', '?d=' + dep.id + location.hash);
