@@ -197,6 +197,15 @@
       </div>
     </div>
 
+    <div class="card accent" id="planCCard" style="margin-top:16px;display:none">
+      <p class="kicker">Plan C ／ 移動しない・最安</p>
+      <h3>2泊とも「ねむりん」に連泊（那須ハイランドは日帰り）</h3>
+      <p class="sub" id="cSub"></p>
+      <div class="price" id="cPrice"></div>
+      <div class="links" style="margin-top:2px" id="cPills"></div>
+      <p class="note" id="cNote"></p>
+    </div>
+
     <div class="card" style="margin-top:16px">
       <p class="kicker">比較検討したが見送り</p>
       <ul class="spec" style="border-top:none;padding-top:2px">
@@ -495,6 +504,38 @@
       + '</div></div>';
   }
 
+  /* ---------------- budget（Plan C・対応日程のみ） ---------------- */
+  function budgetCardC(dep) {
+    var c = dep.calc, t = c.C;
+
+    function sub(x) {
+      return x.date + '／' + x.room + (x.coupon ? '／クーポン' + yen(x.coupon) + '円適用後' : '／クーポンなし');
+    }
+    var rows = brow('ねむりん 1泊目（1泊2食）', sub(c.nemurin), c.nemurin.net);
+    rows += brow('ステーキ食べ放題 C', '1,900円 × 3名・現地精算', 5700);
+    rows += brow('ねむりん 2泊目（1泊2食）', sub(c.nemurinNight2), c.nemurinNight2.net);
+    N.FIXED.forEach(function (f) {
+      if (f.key !== 'steak') rows += brow(f.label, f.sub, f.value);
+    });
+
+    var pct = Math.min(100, Math.round(t.total / N.BUDGET.limit * 100));
+
+    return '<div class="budget">'
+      + '<div class="budget-head">'
+      + '<p class="kicker">Plan C ／ 移動しない・最安</p>'
+      + '<h3>ねむりん ＋ ねむりん（2連泊）</h3>'
+      + '<p>宿を変えず那須ハイランドパークへ日帰り ／ ' + dep.rangeJa + '</p>'
+      + '</div>'
+      + '<div class="rows">' + rows + '</div>'
+      + '<div class="total"><div class="lbl">実費 合計<small>じゃらんポイント ' + yen(t.point)
+      + 'pt 還元後 ≒ ' + yen(round100(t.real)) + '円</small></div>'
+      + '<div class="val">' + yen(t.total) + '<span style="font-size:.5em">円</span></div></div>'
+      + '<div style="padding:14px 20px 18px">'
+      + '<div class="meter"><i style="width:' + pct + '%"></i></div>'
+      + '<div class="meter-cap"><span>目標 150,000円</span><span>上限 200,000円</span></div>'
+      + '</div></div>';
+  }
+
   /* ---------------- render ---------------- */
   /* 価格ブロック。クーポンがある日だけ「元値 → 支払額」の二段表示にする */
   function priceHtml(x, unit) {
@@ -594,6 +635,28 @@
     $('epNote').innerHTML = (c.epinard.note ? c.epinard.note + '<br>' : '')
       + 'エピナールはじゃらんの宿クーポンが<strong>全日程で発行なし</strong>のため、値引きは早期割引42（10%OFF）だけです。';
 
+    /* --- stay 2・Plan C（対応日程のみ） --- */
+    var planCCard = $('planCCard');
+    if (c.C) {
+      planCCard.style.display = '';
+      var minA = Math.min.apply(null, N.DEPARTURES.map(function (d) { return d.calc.A.total; }));
+      var minReal = Math.min.apply(null, N.DEPARTURES.map(function (d) { return d.calc.A.real; }));
+      $('cSub').innerHTML = '1泊目 ' + c.nemurin.date + '（' + c.nemurin.room + '）／2泊目 '
+        + c.nemurinNight2.date + '（' + c.nemurinNight2.room + '）';
+      $('cPrice').innerHTML = '<span class="num">' + yen(c.C.total) + '</span><span class="yen">円</span>'
+        + '<span class="unit">3名合計・2泊3日・税込（A/B案と同条件）</span>';
+      $('cPills').innerHTML = '<span class="pill g">ポイント ' + yen(c.C.point) + 'pt</span>'
+        + (c.nemurinNight2.stock != null ? '<span class="pill r">あと' + c.nemurinNight2.stock + '部屋</span>' : '');
+      $('cNote').innerHTML = 'サンバレー／エピナールへ移動せず、初日と同じねむりんにもう1泊する案です。'
+        + 'A案（' + yen(c.A.total) + '円）より <strong>' + yen(c.A.total - c.C.total) + '円安い ' + yen(c.C.total) + '円</strong>'
+        + '（ポイント還元後の実質 約' + yen(round100(c.C.real)) + '円）で、'
+        + '6日程のどのA案（最安 ' + yen(minA) + '円）よりも安く、実質でも6日程の最安（約' + yen(round100(minReal)) + '円）を下回ります。<br>'
+        + (c.nemurinNight2.note ? c.nemurinNight2.note + '<br>' : '')
+        + 'ただし2泊目はサンバレー／エピナールのバイキング・温泉・屋内プールを体験できず、夕食も初日と同じねむりんの1泊2食プランになります。';
+    } else {
+      planCCard.style.display = 'none';
+    }
+
     /* --- play --- */
     $('treasureNote').innerHTML = (dep.id === '1023')
       ? '10/20〜22 はメンテナンス休場で、<strong>10/23 が営業再開日</strong>です。日程を確定する前に営業状況を電話で確認しておくと安心。地下鉱山だけなら1,800円に圧縮できます。'
@@ -612,7 +675,7 @@
       + '円</strong>（ポイント ' + yen(c.A.point) + 'pt 還元後の実質 約' + yen(round100(c.A.real))
       + '円）、B案 実費 ' + yen(c.B.total) + '円（実質 約' + yen(round100(c.B.real)) + '円）。' + verdictA
       + '宿泊料はすべて ' + N.surveyed + ' 時点の じゃらん 実測値です。';
-    $('budgetCards').innerHTML = budgetCard(dep, 'A') + budgetCard(dep, 'B');
+    $('budgetCards').innerHTML = budgetCard(dep, 'A') + budgetCard(dep, 'B') + (c.C ? budgetCardC(dep) : '');
 
     /* --- swap animation --- */
     ['estbar', 'alertList', 'profileCond', 'profilePros', 'profileCons', 'timeline', 'budgetCards']

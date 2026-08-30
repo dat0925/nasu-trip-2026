@@ -51,6 +51,13 @@
       epinard:{ date:'10/10（土）泊', price:95679, coupon:0, point:11481, stock:null,
                 plan:'【早期割引42】和洋中100種バイキング', room:'【和洋室】絆ファミリールーム／禁煙' }
     },
+    /* C案＝サンバレー／エピナールへ移動せず、2泊目もねむりんに連泊（那須ハイは日帰り）。
+       2泊目の実測値は10/10発の stay.nemurin と同じ部屋・同じ実測データ（同じ実在の泊）。 */
+    planC:{
+      nemurinNight2:{ date:'10/10（土）泊', price:45000, coupon:11000, point:5400, stock:1,
+                plan:'ノンアルコール基本プラン', room:'別館 ツインルーム【喫煙】',
+                note:'<strong>禁煙室・コテージは全て満室</strong>。空いているのはこの喫煙室1室だけです（10/10発と同じ実在の1室）。' }
+    },
     epinardDeadline:'8/29',
     epinardDeadlineNote:'10/10 泊の42日前＝8/29 が期限。<strong>残り1日</strong>です。',
     days:[
@@ -71,7 +78,8 @@
     pros:[
       'ねむりんが 34,000円・<strong>禁煙室が残2</strong>。10/10発より11,000円安く、部屋も選べます。',
       '10/12（月・スポーツの日）が<strong>丸ごと予備日</strong>。渋滞を避けて日曜に帰り、月曜は家でゆっくりできます。',
-      '2日目（土曜）に那須ハイをまるごと当てられるので、雨天順延の余地もあります。'
+      '2日目（土曜）に那須ハイをまるごと当てられるので、雨天順延の余地もあります。',
+      '<strong>C案＝2泊ともねむりんにすれば120,200円（実質約110,720円）</strong>まで下げられます。6日程のどのA案よりも安く、遊ぶ内容はそのまま（詳しくは「2泊目」の比較へ）。'
     ],
     cons:[
       '<strong>2泊目が3連休初日の土曜</strong>で、ホテル側が跳ね上がります。サンバレーは 69,795円（他の週末より約1.8万円高い）、エピナールは 95,679円で6日程の最高値。',
@@ -351,7 +359,18 @@
     var B = { total: nem.net + ep.net + FIXED_TOTAL, point: nem.point + ep.point };
     B.real = B.total - B.point;
 
-    return { nemurin:nem, sunvalley:sv, epinard:ep, fixedTotal:FIXED_TOTAL, A:A, B:B };
+    var result = { nemurin:nem, sunvalley:sv, epinard:ep, fixedTotal:FIXED_TOTAL, A:A, B:B };
+
+    /* C案＝ホテルへ移動せず、2泊目もねむりんに連泊するパターン（対応日程のみ） */
+    if (dep.planC) {
+      var nem2 = pack(dep.planC.nemurinNight2);
+      var C = { total: nem.net + nem2.net + FIXED_TOTAL, point: nem.point + nem2.point };
+      C.real = C.total - C.point;
+      result.nemurinNight2 = nem2;
+      result.C = C;
+    }
+
+    return result;
   }
 
   /* ---------- ヘルパ ---------- */
