@@ -258,6 +258,11 @@ nav a.cmp{
   border:1px solid color-mix(in srgb,var(--amber) 34%,transparent);
 }
 nav a.cmp:hover{background:var(--amber);color:var(--bg-2)}
+nav a.dec{
+  background:color-mix(in srgb,var(--green-2) 16%,transparent);color:var(--green-2);
+  border:1px solid color-mix(in srgb,var(--green-2) 38%,transparent);
+}
+nav a.dec:hover{background:var(--green-2);color:var(--bg-2)}
 
 /* ---------- estimate banner ---------- */
 .estbar{

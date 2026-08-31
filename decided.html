@@ -1,0 +1,726 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>那須 1泊2日 ── 決定事項</title>
+<meta name="description" content="2026年9月25日〜26日の那須旅行の決定事項。ホテルサンバレー那須（予約済・フォレストヴィラ／オールインクルーシブ）を軸に、トレジャーストーンパーク・温泉プール・とりっくあーとぴあ・茶屋卯三郎の行程と予算をまとめたページ。">
+<meta name="theme-color" content="#14342b">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New:wght@400;500;700;900&family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<style>
+  /* ---- 決定ページ専用 ---- */
+  .fixed-bar{
+    display:flex;gap:11px;align-items:flex-start;
+    margin-top:clamp(28px,6vw,44px);
+    border-radius:var(--r);padding:14px 17px;
+    background:color-mix(in srgb,var(--green-2) 13%,transparent);
+    border:1px solid color-mix(in srgb,var(--green-2) 32%,transparent);
+    font-size:13px;line-height:1.7;color:var(--ink-2);
+  }
+  .fixed-bar b{
+    flex:0 0 auto;font-size:11px;font-weight:900;color:var(--green-2);
+    background:color-mix(in srgb,var(--green-2) 16%,transparent);
+    padding:2px 9px;border-radius:6px;margin-top:3px;letter-spacing:.06em;
+  }
+  .stamp{
+    display:inline-flex;align-items:center;gap:6px;
+    font-size:11.5px;font-weight:900;letter-spacing:.08em;
+    color:var(--green-2);border:1.5px solid color-mix(in srgb,var(--green-2) 45%,transparent);
+    padding:3px 10px;border-radius:7px;
+  }
+  .stamp::before{content:"✓";font-size:12px}
+
+  /* 候補リスト */
+  .opts{list-style:none;display:grid;gap:0;margin-top:4px}
+  .opts li{
+    display:grid;grid-template-columns:1fr auto;gap:4px 14px;
+    padding:13px 0;border-bottom:1px solid var(--line);align-items:baseline;
+  }
+  .opts li:last-child{border-bottom:none}
+  .opts .nm{font-size:14px;font-weight:800;line-height:1.5}
+  .opts .nm .pill{margin-left:7px;vertical-align:1px}
+  .opts .fee{font-size:12.5px;font-weight:900;color:var(--ink-3);font-feature-settings:"tnum";white-space:nowrap;text-align:right}
+  .opts .ds{grid-column:1/-1;font-size:12.5px;color:var(--ink-2);line-height:1.65}
+  .opts .ds em{font-style:normal;color:var(--ink-3);font-weight:700}
+
+  /* やることリスト */
+  .todo{list-style:none;display:grid;gap:10px;margin-top:4px}
+  .todo li{position:relative;padding-left:30px;font-size:13.5px;line-height:1.7}
+  .todo li::before{
+    content:"";position:absolute;left:0;top:4px;width:18px;height:18px;
+    border-radius:5px;border:1.5px solid var(--ink-3);
+  }
+  .todo li b{display:block;font-size:11px;font-weight:900;letter-spacing:.1em;color:var(--amber);margin-bottom:1px}
+  .todo li.done::before{
+    background:var(--green-2);border-color:var(--green-2);
+    content:"✓";color:var(--bg-2);display:grid;place-items:center;font-size:12px;font-weight:900;
+  }
+  .todo li.done b{color:var(--green-2)}
+
+  /* 予約票 */
+  .receipt{font-feature-settings:"tnum"}
+  .receipt .row .lbl{font-weight:800}
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="wrap">
+    <p class="eyebrow">Nasu &mdash; Two Days, One Night &middot; Decided</p>
+    <h1>那須 1泊2日 決定事項<small>2026.09.25 FRI &ndash; 09.26 SAT ／ 大人2名＋小学生1名</small></h1>
+    <div class="badges">
+      <span class="badge b3">🏨 サンバレー那須 予約済</span>
+      <span class="badge b1">💎 トレジャーストーンパーク</span>
+      <span class="badge b2">🖼 とりっくあーとぴあ</span>
+      <span class="badge">🍵 茶屋 卯三郎</span>
+    </div>
+  </div>
+</header>
+
+<div class="topbar">
+  <nav>
+    <div class="wrap">
+      <a href="#stay">宿泊（確定）</a>
+      <a href="#day1">1日目</a>
+      <a href="#day2">2日目</a>
+      <a href="#spots">行き先</a>
+      <a href="#options">候補</a>
+      <a href="#budget">予算</a>
+      <a href="#todo">やること</a>
+      <a href="#links">リンク集</a>
+      <a class="cmp" href="index.html">旧・6日程比較 →</a>
+    </div>
+  </nav>
+</div>
+
+<main>
+
+<!-- ============ 確定バナー ============ -->
+<div class="wrap">
+  <div class="fixed-bar">
+    <b>確定</b>
+    <span>
+      <strong>9/25（金）ホテルサンバレー那須・フォレストヴィラ</strong>を予約済み（じゃらんnet／予約番号 04N8J1X1・2026年8月31日 01:19 受付）。
+      宿泊料 <strong>42,900円</strong> は現地決済です。旅程は
+      <strong>1日目＝トレジャーストーンパーク → ホテル → 温泉プール</strong>、
+      <strong>2日目＝茶屋 卯三郎（ランチ）→ 那須とりっくあーとぴあ</strong> で確定。
+      当初検討していた2泊3日（ねむりん＋那須ハイランドパーク）は取りやめ、合歓林オリエンタルは 8/31 に予約取消済みです。
+    </span>
+  </div>
+</div>
+
+<!-- ============ 要注意 ============ -->
+<div class="wrap" id="alert">
+  <div class="alert">
+    <h3>先に押さえること</h3>
+    <ul>
+      <li><b>要予約</b><strong>トレジャーストーンパークの「地下鉱山」は事前予約制（オンライン受付のみ）。</strong>1チーム3名まで1,800円。9/25（金）は 10:00〜17:00 営業。開場直後の枠を押さえておくと、そのあとが全部ラクになります。</li>
+      <li><b>9/24 まで</b>サンバレーの<strong>支払方法をオンラインカード決済に変更できる期限が 9月24日 24:00</strong>。変えないなら現地決済（42,900円＋入湯税300円＋プール代）を現金かカードで用意。</li>
+      <li><b>先着順</b><strong>夕食バイキングの時間は当日チェックイン時にフロントで案内、先着順です。</strong>早い枠が埋まると遅い時間に回されるので、<strong>チェックインは早いほど有利</strong>（14:30から可能）。</li>
+      <li><b>予約不可</b>茶屋 卯三郎は<strong>予約を受け付けておらず先着順</strong>。土曜は平日以上に並びます。11:00 の開店に合わせて入るのが唯一の確実策です。</li>
+      <li><b>要確認</b>温泉プール「アクアヴィーナス」は 9/4〜10/12 の<strong>金土日祝のみ営業</strong>で 9/25 は営業日。ただし<strong>秋シーズンの営業時間と、チェックイン前に入れるかはホテルに要確認</strong>（夏季は 9:00〜21:00・最終入場20:00）。</li>
+      <li><b>連絡</b>車で <strong>18時を過ぎる</strong>到着になる場合はホテルへ電話連絡が必要（0287-76-3800）。</li>
+    </ul>
+  </div>
+</div>
+
+<!-- ============ 宿泊 ============ -->
+<section id="stay">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="sec-num">Stay &mdash; confirmed</p>
+      <h2>ホテルサンバレー那須（予約済）</h2>
+      <p>じゃらんnet の予約確認メール（2026年8月30日受信）の内容をそのまま転記しています。</p>
+    </div>
+
+    <div class="grid g2">
+      <div class="card accent">
+        <p class="kicker">予約内容</p>
+        <h3>◇フォレストヴィラ◇ 洋室</h3>
+        <p class="sub">【オールインクルーシブ】小学生までのお子様の宿泊料金が1,100円／お食事バイキング</p>
+        <p><span class="stamp">予約確定 04N8J1X1</span></p>
+        <ul class="spec">
+          <li><span>IN</span>2026年9月25日（金）16:00 ／ 可能時間 <strong>14:30〜18:00</strong></li>
+          <li><span>OUT</span>2026年9月26日（土）〜10:00</li>
+          <li><span>部屋</span>フォレストヴィラ 洋室 × 1室（大人2名＋小学生1名）</li>
+          <li><span>食事</span>夕・朝ともホテル指定レストランでバイキング</li>
+          <li><span>支払</span>現地決済（9/24 24:00 までカード決済に変更可）</li>
+          <li><span>所在地</span>〒325-0301 栃木県那須郡那須町湯本203</li>
+          <li><span>電話</span>0287-76-3800</li>
+        </ul>
+        <p class="note">
+          宿からの連絡事項：車で18時を過ぎる場合は要連絡。JR那須塩原駅発の無料シャトルバス（10:40／13:35／15:50・完全予約制）あり。
+        </p>
+      </div>
+
+      <div class="card">
+        <p class="kicker">オールインクルーシブの中身</p>
+        <h3>追加料金なしで使えるもの</h3>
+        <p class="sub">フォレストヴィラ館限定の特典です</p>
+        <ul class="pc">
+          <li>レストラン・BARのドリンクが飲み放題</li>
+          <li>ホテルメイドスウィーツ、駄菓子、お夜食</li>
+          <li>チェックイン前・チェックアウト後も<strong>大浴場が無料</strong></li>
+          <li>卓球・カラオケなどのアミューズメント（※一部有料）</li>
+          <li>大浴場「森の湯」（フォレストヴィラ）／「湯遊天国」（本館・9/25は営業日で滞在中無料）</li>
+        </ul>
+        <p class="pc-head">別料金になるもの</p>
+        <ul class="pc bad">
+          <li>温泉プール「アクアヴィーナス」＝ 大人500円／小人300円（1日あたり）</li>
+          <li>入湯税 大人150円 × 2名 ＝ 300円</li>
+          <li>「湯遊天国」のチェックイン前・チェックアウト後の利用（大人500円／小人300円）</li>
+        </ul>
+        <p class="note">
+          本館は2026年中のグランドオープンに向けて改装中。「湯遊天国」一の湯（男性）の内湯は利用できません。
+        </p>
+      </div>
+    </div>
+
+    <div class="grid g2" style="margin-top:16px">
+      <div class="budget receipt">
+        <div class="budget-head">
+          <p class="kicker">料金明細</p>
+          <h3>宿泊料 42,900円（税込・サービス料込）</h3>
+          <p>じゃらん予約確認メールの記載どおり／ポイント・クーポン利用 0</p>
+        </div>
+        <div class="rows">
+          <div class="row"><div class="lbl">大人<small>20,900円 × 2名</small></div><div class="val">41,800円</div></div>
+          <div class="row"><div class="lbl">小学生<small>プラン特典で 1,100円</small></div><div class="val">1,100円</div></div>
+          <div class="row"><div class="lbl">入湯税<small>大人150円 × 2名・現地払い</small></div><div class="val">300円</div></div>
+          <div class="row"><div class="lbl">宿泊税<small>那須町の宿泊税は 2026年10月1日施行。9/25泊は対象外</small></div><div class="val">0円</div></div>
+          <div class="row"><div class="lbl">温泉プール<small>大人500円 × 2＋小人300円 × 1</small></div><div class="val">1,300円</div></div>
+        </div>
+        <div class="total">
+          <div class="lbl">当日ホテルで払う額<small>宿泊料＋入湯税＋プール代</small></div>
+          <div class="val">44,500円</div>
+        </div>
+      </div>
+
+      <div class="card">
+        <p class="kicker">キャンセル規定</p>
+        <h3>取消料は4日前から</h3>
+        <p class="sub">サイト上から変更・取消できるのは当日18:00まで</p>
+        <ul class="spec">
+          <li><span>4〜2日前</span>宿泊料金の30%（12,870円）</li>
+          <li><span>1日前</span>宿泊料金の50%（21,450円）</li>
+          <li><span>当日</span>宿泊料金の100%（42,900円）</li>
+          <li><span>無連絡</span>宿泊料金の100%</li>
+        </ul>
+        <p class="note">
+          取消料が発生し始めるのは <strong>9月21日（月）</strong> から。それまでは無料でキャンセルできます。
+          9/25 18:00 を過ぎるとサイト操作ができないので、以降はホテルに直接電話を。
+        </p>
+        <div class="links">
+          <a class="primary" href="https://www.nasu3800.co.jp/" target="_blank" rel="noopener">サンバレー公式</a>
+          <a href="https://www.jalan.net/yad331120/plan/" target="_blank" rel="noopener">じゃらんの宿ページ</a>
+          <a class="ig" href="https://www.instagram.com/sunvalley_nasu_official/" target="_blank" rel="noopener">@sunvalley_nasu_official</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 1日目 ============ -->
+<section id="day1">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="sec-num">Day 1</p>
+      <h2>9月25日（金）── 宝石探し → プール → バイキング</h2>
+      <p>トレジャーストーンパークは 10:00 開場。開場と同時に入って昼過ぎに切り上げ、15時台にはホテルへ。時刻は目安です。</p>
+    </div>
+
+    <div class="day">
+      <div class="day-head">
+        <span class="day-tag">DAY 1</span>
+        <strong>9/25（金）</strong>
+        <em>那須IC 経由・車移動</em>
+      </div>
+      <ul class="tl">
+        <li>
+          <time>07:00</time>
+          <b>出発</b>
+          <p>東北道で那須ICへ。休憩込みで約3時間、途中の那須高原SAで一息。</p>
+        </li>
+        <li class="hl">
+          <time>10:00</time>
+          <b>宝石探し トレジャーストーンパーク</b>
+          <p>開場と同時に入場。<strong>地下鉱山（12分・要事前予約）</strong>と<strong>クリスタルリバー（20分・当日受付）</strong>の両方、余力があれば水晶ジオード割りも。屋内メインなので雨でも問題なし。</p>
+          <p class="cost">4,200円（地下鉱山1,800＋クリスタルリバー800×3名）</p>
+        </li>
+        <li>
+          <time>12:00</time>
+          <b>ランチ</b>
+          <p>那須街道沿いで軽めに。夜がバイキングなので入れすぎないのが正解。</p>
+          <p class="cost">約3,000円</p>
+        </li>
+        <li>
+          <time>13:30</time>
+          <b>空き枠</b>
+          <p>南ヶ丘牧場（入場・駐車無料）かチーズガーデン那須本店あたりで時間調整。<a href="#options">下の候補</a>から好きなものを。</p>
+        </li>
+        <li class="hl">
+          <time>15:00</time>
+          <b>ホテルサンバレー那須 チェックイン</b>
+          <p>チェックインは14:30から可能。<strong>先に手続きを済ませて夕食の早い時間帯を確保</strong>してから、荷物を置いて水着に着替えるのが安全です。</p>
+        </li>
+        <li class="hl">
+          <time>15:30</time>
+          <b>温泉プール「アクアヴィーナス」</b>
+          <p>1周50mの流れる露天風呂や洞窟風呂など22種類。屋外なので日が落ちる前が気持ちいい時間帯です。水着・タオル持参。</p>
+          <p class="cost">1,300円（大人500×2＋小人300）</p>
+        </li>
+        <li>
+          <time>18:00</time>
+          <b>夕食バイキング</b>
+          <p>オールインクルーシブでドリンクも込み。時間帯はチェックイン時に案内されます。</p>
+          <p class="cost">宿泊料に込み</p>
+        </li>
+        <li>
+          <time>20:00</time>
+          <b>温泉「森の湯」／「湯遊天国」</b>
+          <p>9/25は本館「湯遊天国」も営業日で、滞在中は無料。フォレストヴィラの「森の湯」と両方入れます。</p>
+        </li>
+        <li>
+          <time>21:00</time>
+          <b>夜のオールインクルーシブ</b>
+          <p>BARのドリンク、ホテルメイドスウィーツ、駄菓子、お夜食。卓球やカラオケも。</p>
+        </li>
+      </ul>
+
+      <div class="fixed-bar">
+        <b>順番</b>
+        <span>
+          「プールを楽しんでからチェックイン」でも大丈夫ですが、<strong>夕食バイキングの時間が先着順</strong>なのと、
+          <strong>着替え・荷物・貴重品の置き場</strong>を考えると、<strong>チェックイン → 部屋 → プール</strong>のほうが確実です。
+          プールは宿泊者でも1日あたり大人500円・小人300円の別料金なので、チェックイン前に入れるかどうかは念のためホテルに確認を。
+        </span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 2日目 ============ -->
+<section id="day2">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="sec-num">Day 2</p>
+      <h2>9月26日（土）── 殺生石 → 卯三郎 → トリックアート</h2>
+      <p>チェックアウトは10:00。卯三郎は予約不可・先着順なので、<strong>11:00の開店に合わせる</strong>のが行程の軸になります。</p>
+    </div>
+
+    <div class="day">
+      <div class="day-head">
+        <span class="day-tag">DAY 2</span>
+        <strong>9/26（土）</strong>
+        <em>ホテル → 那須湯本 → 那須高原</em>
+      </div>
+      <ul class="tl">
+        <li>
+          <time>07:00</time>
+          <b>朝風呂</b>
+          <p>チェックアウト後も大浴場は無料で使えます（オールインクルーシブ特典）。焦らなくて大丈夫。</p>
+        </li>
+        <li>
+          <time>08:00</time>
+          <b>朝食バイキング</b>
+          <p class="cost">宿泊料に込み</p>
+        </li>
+        <li>
+          <time>10:00</time>
+          <b>チェックアウト</b>
+          <p>現地決済ぶん（宿泊料42,900円＋入湯税300円＋プール代1,300円）をここで精算。</p>
+        </li>
+        <li>
+          <time>10:15</time>
+          <b>殺生石・那須湯本 散策</b>
+          <p>ホテルから車で数分。九尾の狐伝説の名所で、白い岩肌と地熱の景色は写真映えします。無料・30分ほど。</p>
+          <p class="cost">無料</p>
+        </li>
+        <li class="hl">
+          <time>11:00</time>
+          <b>ランチ｜茶屋 卯三郎</b>
+          <p>那須高原のお米で作るおこわ・つきたてのおもち・けんちん汁。<strong>予約不可・先着順</strong>で、平日でも数十分待ちの人気店です。土曜は<strong>開店と同時が鉄則</strong>。</p>
+          <p class="cost">約4,200円（膳もの 1,400円前後 × 3名）</p>
+        </li>
+        <li class="hl">
+          <time>12:30</time>
+          <b>那須とりっくあーとぴあ</b>
+          <p><strong>2館共通券</strong>で。全天候型なので雨でも安心。写真を撮りまくれるのがこの施設の本体です。9:30〜18:00 営業。</p>
+          <p class="cost">6,100円（大人2,300×2＋4歳〜中学生1,500）</p>
+        </li>
+        <li>
+          <time>15:00</time>
+          <b>お土産</b>
+          <p>チーズガーデン那須本店（御用邸チーズケーキ）か、帰り道の那須ガーデンアウトレット。</p>
+          <p class="cost">約6,000円</p>
+        </li>
+        <li>
+          <time>16:00</time>
+          <b>那須IC から帰路</b>
+          <p>土曜夕方の東北道は渋滞しがち。早めに乗るか、逆にゆっくり夕飯を食べてからずらすか。</p>
+        </li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 行き先の詳細 ============ -->
+<section id="spots">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="sec-num">Spots</p>
+      <h2>確定した行き先</h2>
+      <p>営業日・料金は 2026年8月31日時点の公式サイト記載です。</p>
+    </div>
+
+    <div class="grid g2">
+      <div class="card accent">
+        <p class="kicker">Day 1 &middot; 娘のメインイベント</p>
+        <h3>宝石探し トレジャーストーンパーク</h3>
+        <p class="sub">栃木県那須郡那須町高久丙123 ／ 0287-73-8039</p>
+        <ul class="spec">
+          <li><span>9/25</span><strong>10:00〜17:00 営業</strong>（公式の営業カレンダーで確認済）</li>
+          <li><span>地下鉱山</span>1,800円／1チーム3名まで・12分間取り放題・<strong>事前予約制（オンラインのみ）</strong></li>
+          <li><span>クリスタルリバー</span>800円／1名・20分間・当日受付（閉場30分前まで）</li>
+          <li><span>ジオード割り</span>閉場時間まで随時受付</li>
+          <li><span>3名合計</span><strong>4,200円</strong>（地下鉱山＋クリスタルリバー）</li>
+        </ul>
+        <p class="note">水晶・アメジスト・メノウなどのパワーストーンを発掘。屋内の地下鉱山は雨でも遊べます。10/20〜22 はメンテナンス臨時休場ですが今回の日程には影響なし。</p>
+        <div class="links">
+          <a class="primary" href="http://www.treasurestonepark.com/" target="_blank" rel="noopener">公式サイト</a>
+          <a href="http://www.treasurestonepark.com/hours.html" target="_blank" rel="noopener">営業カレンダー</a>
+          <a href="http://www.treasurestonepark.com/access.html" target="_blank" rel="noopener">アクセス</a>
+          <a class="ig" href="https://www.instagram.com/treasurestonepark/" target="_blank" rel="noopener">@treasurestonepark</a>
+        </div>
+      </div>
+
+      <div class="card">
+        <p class="kicker">Day 1 &middot; ホテル内</p>
+        <h3>温泉プール「アクアヴィーナス」</h3>
+        <p class="sub">ホテルサンバレー那須・屋外温泉プール</p>
+        <ul class="spec">
+          <li><span>営業日</span>9/4〜10/12 の<strong>金土日祝</strong>（9/21〜23 は連日）→ <strong>9/25（金）は営業</strong></li>
+          <li><span>料金</span>宿泊者 大人500円／小人（3歳〜小学生）300円・1日あたり</li>
+          <li><span>内容</span>1周50mの流れる露天風呂、洞窟風呂、うたせ湯など22種類</li>
+          <li><span>営業時間</span>夏季は 9:00〜21:00（最終入場20:00）。<strong>秋シーズンは要確認</strong></li>
+          <li><span>持ち物</span>水着・タオル（レンタル有無は要確認）</li>
+        </ul>
+        <p class="note">同じ期間だけ本館大浴場「湯遊天国」も営業。宿泊者は滞在中無料、チェックイン前・チェックアウト後は有料（大人500円／小人300円）です。</p>
+        <div class="links">
+          <a class="primary" href="https://www.nasu3800.co.jp/spa/" target="_blank" rel="noopener">温泉・プール</a>
+          <a href="https://www.nasu3800.co.jp/rooms/forestvilla.php" target="_blank" rel="noopener">フォレストヴィラ</a>
+        </div>
+      </div>
+
+      <div class="card">
+        <p class="kicker">Day 2 &middot; ランチ</p>
+        <h3>茶屋 卯三郎</h3>
+        <p class="sub">栃木県那須郡那須町高久乙湯道東2727-344</p>
+        <ul class="spec">
+          <li><span>営業時間</span>土日祝 11:00〜14:30（L.O.）／平日 11:00〜14:00（L.O.）</li>
+          <li><span>定休日</span>火曜（祝日は営業）→ <strong>9/26（土）は営業</strong></li>
+          <li><span>予約</span><strong>不可・先着順</strong></li>
+          <li><span>名物</span>おこわ、つきたてのおもち、けんちん汁、季節限定メニュー</li>
+          <li><span>目安</span>膳もの 1,400円前後／3名で約4,200円</li>
+        </ul>
+        <p class="note">古民家風の店内で那須高原の米を使ったおこわと餅。平日でも数十分待ちの人気店なので、土曜は11:00の開店に着けるよう逆算を。</p>
+        <div class="links">
+          <a class="primary" href="https://usaburou.com/" target="_blank" rel="noopener">公式サイト</a>
+          <a href="https://tabelog.com/tochigi/A0905/A090501/9001082/" target="_blank" rel="noopener">食べログ</a>
+          <a class="ig" href="https://www.instagram.com/chaya_usaburou/" target="_blank" rel="noopener">@chaya_usaburou</a>
+        </div>
+      </div>
+
+      <div class="card">
+        <p class="kicker">Day 2 &middot; 全天候型</p>
+        <h3>那須とりっくあーとぴあ</h3>
+        <p class="sub">0287-62-8388</p>
+        <ul class="spec">
+          <li><span>営業時間</span>9:30〜18:00（4〜9月）／年中無休</li>
+          <li><span>入館券</span>大人1,500円・4歳〜中学生900円 → 3名 3,900円</li>
+          <li><span>2館共通券</span>大人2,300円・4歳〜中学生1,500円 → 3名 <strong>6,100円</strong></li>
+          <li><span>3館共通券</span>大人2,900円・4歳〜中学生2,000円 → 3名 7,800円</li>
+          <li><span>3歳以下</span>無料</li>
+        </ul>
+        <p class="note">2館なら2〜3時間、3館だと半日近くかかります。ランチ後からの半日なら<strong>2館共通券がちょうどいい分量</strong>。前売りチケットがコンビニ・ウェブで買えます。</p>
+        <div class="links">
+          <a class="primary" href="https://www.trick-art.jp/" target="_blank" rel="noopener">公式サイト</a>
+          <a href="https://www.trick-art.jp/ticket/" target="_blank" rel="noopener">料金・チケット</a>
+          <a class="ig" href="https://www.instagram.com/nasutrickart/" target="_blank" rel="noopener">@nasutrickart</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 候補 ============ -->
+<section id="options">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="sec-num">Options</p>
+      <h2>空き枠に入れる候補</h2>
+      <p>
+        埋まっていないのは <strong>1日目の13:30〜15:00</strong> と <strong>2日目の15:00以降</strong>。
+        料金は3名（大人2＋小学生1）合計の目安です。★は今回の動線にいちばん素直に乗るもの。
+      </p>
+    </div>
+
+    <div class="grid g2">
+      <div class="card accent">
+        <p class="kicker">おすすめ</p>
+        <h3>動線に素直に乗る4つ</h3>
+        <ul class="opts">
+          <li>
+            <span class="nm">★ 殺生石・那須湯本 <span class="pill g">無料</span></span>
+            <span class="fee">0円</span>
+            <span class="ds"><em>ホテルから車3分・30分</em>／九尾の狐伝説の名所。白い岩肌と湯けむりの景色。<strong>2日目の朝、チェックアウト直後にそのまま寄れる</strong>のが強い。隣に共同浴場「鹿の湯」もあります。</span>
+          </li>
+          <li>
+            <span class="nm">★ 那須高原 南ヶ丘牧場 <span class="pill g">入場・駐車無料</span></span>
+            <span class="fee">0円＋飲食</span>
+            <span class="ds"><em>ホテルから車10分・1時間／8:00〜17:30・年中無休</em>／牛・馬・羊・ロバとのふれあい、ガーンジィ牛のソフトクリーム、釣り堀や乗馬も。<strong>1日目の13:30枠にちょうどいい</strong>し、無料なので早めに切り上げても惜しくない。</span>
+          </li>
+          <li>
+            <span class="nm">★ チーズガーデン 那須本店 <span class="pill g">入場無料</span></span>
+            <span class="fee">お土産代のみ</span>
+            <span class="ds"><em>那須街道沿い・30分</em>／御用邸チーズケーキの本店。カフェ併設。<strong>お土産はここで完結できる</strong>ので、1日目の空き枠でも2日目の帰りがけでもOK。</span>
+          </li>
+          <li>
+            <span class="nm">★ 那須ガーデンアウトレット <span class="pill g">入場無料</span></span>
+            <span class="fee">買い物次第</span>
+            <span class="ds"><em>那須IC の手前・1〜2時間</em>／帰り道にそのまま寄れる位置。フードコートもあるので、<strong>渋滞を避けて夕飯を先に済ませる</strong>使い方もできます。</span>
+          </li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <p class="kicker">屋内・雨の日の保険</p>
+        <h3>天気が崩れたら</h3>
+        <ul class="opts">
+          <li>
+            <span class="nm">那須ステンドグラス美術館</span>
+            <span class="fee">3,700円</span>
+            <span class="ds"><em>とりっくあーとぴあの近く・1時間</em>／大人1,600円・小学生500円。中世ヨーロッパ風の館にアンティークのステンドグラス。パイプオルガンの生演奏あり。写真がきれいに撮れます。</span>
+          </li>
+          <li>
+            <span class="nm">藤城清治美術館 那須高原</span>
+            <span class="fee">約5,000円 <span class="pill r">要確認</span></span>
+            <span class="ds"><em>那須高原・1〜1.5時間／大人1,800円前後</em>／影絵作家・藤城清治の美術館。館内も庭も作り込まれていて、大人のほうが刺さるタイプ。料金は公式で要確認。</span>
+          </li>
+          <li>
+            <span class="nm">那須テディベアミュージアム</span>
+            <span class="fee">約3,500円 <span class="pill r">要確認</span></span>
+            <span class="ds"><em>とりっくあーとぴあの近く・1時間</em>／とりっくあーとぴあと近いので、2館共通券を単館券に落として代わりに入る手も。</span>
+          </li>
+          <li>
+            <span class="nm">お菓子の城 那須ハートランド</span>
+            <span class="fee">入場無料</span>
+            <span class="ds"><em>1時間</em>／工場見学と試食、お菓子作り体験。お土産も買えるので雨宿りついでに実用的。</span>
+          </li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <p class="kicker">時間が余ったら</p>
+        <h3>外遊びの候補</h3>
+        <ul class="opts">
+          <li>
+            <span class="nm">那須ロープウェイ・茶臼岳</span>
+            <span class="fee">約5,000円 <span class="pill r">要確認</span></span>
+            <span class="ds"><em>ホテルから車20分・2時間</em>／<strong>9月下旬は茶臼岳の紅葉が始まる時期</strong>で、那須で一番の絶景。ただし土日は駐車場待ちの渋滞が出ます。行くなら1日目の午前を丸ごと充てる規模。</span>
+          </li>
+          <li>
+            <span class="nm">那須アルパカ牧場</span>
+            <span class="fee">約2,500円 <span class="pill r">要確認</span></span>
+            <span class="ds"><em>1時間</em>／アルパカ約400頭。小学生には刺さりますが、那須高原の北の外れで少し寄り道になります。</span>
+          </li>
+          <li>
+            <span class="nm">那須りんどう湖ファミリー牧場</span>
+            <span class="fee">約6,000円 <span class="pill r">要確認</span></span>
+            <span class="ds"><em>半日</em>／ジップラインや遊覧船のある遊園地寄りの牧場。半日は要るので、今回入れるなら1日目を早出しして午前から。</span>
+          </li>
+        </ul>
+        <p class="note">
+          <strong>那須どうぶつ王国は今回は見送り推奨。</strong>片道40分＋滞在4〜5時間で、丸1日ないと消化不良になります。
+          同じ理由で那須ハイランドパークも1泊2日には収まりません（2泊3日案で検討していたのはこのため）。
+        </p>
+      </div>
+
+      <div class="card">
+        <p class="kicker">組み替え案</p>
+        <h3>2日目をこう変える手も</h3>
+        <ul class="opts">
+          <li>
+            <span class="nm">卯三郎を先に、朝いちで とりっくあーと</span>
+            <span class="fee">同額</span>
+            <span class="ds">とりっくあーとぴあは 9:30 開館。<strong>チェックアウト後すぐ向かえば10:30から2館を回れて</strong>、卯三郎に13:00頃に入る形。ただし<strong>卯三郎の土曜13時台は待ち時間が読めない</strong>ので、確実性なら現行案（11:00開店に入る）のほうが上です。</span>
+          </li>
+          <li>
+            <span class="nm">とりっくあーとを1館に落として美術館を1つ</span>
+            <span class="fee">−2,200円＋α</span>
+            <span class="ds">2館共通券6,100円 → 単館券3,900円にして、浮いた分でステンドグラス美術館（3,700円）へ。<strong>同じエリアなので移動ゼロ</strong>。トリックアートは1館でも小学生は十分満足します。</span>
+          </li>
+          <li>
+            <span class="nm">1日目を早出しして茶臼岳を足す</span>
+            <span class="fee">＋約5,000円</span>
+            <span class="ds">5:00出発 → 8:30 ロープウェイ → 11:00 トレジャーストーンパーク → 14:30 チェックイン。<strong>紅葉の絶景は9月下旬しか狙えない</strong>のが理由。ただし全員の朝が早く、プールまでに体力が残るかは要相談。</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 予算 ============ -->
+<section id="budget">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="sec-num">Budget</p>
+      <h2>予算</h2>
+      <p>大人2名＋小学生1名の合計・税込。宿泊料・施設料金は実額、食事と交通費は概算です。</p>
+    </div>
+
+    <div class="budget">
+      <div class="budget-head">
+        <p class="kicker">1泊2日・3名合計</p>
+        <h3>確定した行程での見積り</h3>
+        <p>候補（<a href="#options">空き枠に入れる候補</a>）を足す場合はここに上乗せしてください</p>
+      </div>
+      <div class="rows">
+        <div class="row"><div class="lbl">宿泊料<small>サンバレー那須 フォレストヴィラ・2食付・予約済</small></div><div class="val">42,900円</div></div>
+        <div class="row"><div class="lbl">入湯税<small>大人150円 × 2名</small></div><div class="val">300円</div></div>
+        <div class="row"><div class="lbl">温泉プール アクアヴィーナス<small>大人500円 × 2＋小人300円 × 1</small></div><div class="val">1,300円</div></div>
+        <div class="row"><div class="lbl">トレジャーストーンパーク<small>地下鉱山1,800＋クリスタルリバー800 × 3名</small></div><div class="val">4,200円</div></div>
+        <div class="row"><div class="lbl">那須とりっくあーとぴあ<small>2館共通券・大人2,300 × 2＋小学生1,500</small></div><div class="val">6,100円</div></div>
+        <div class="row"><div class="lbl">交通費<small>東北道往復ETC 約8,600＋ガソリン 約4,900・概算</small></div><div class="val">13,500円</div></div>
+        <div class="row"><div class="lbl">1日目ランチ<small>那須街道沿いで軽めに・概算</small></div><div class="val">3,000円</div></div>
+        <div class="row"><div class="lbl">2日目ランチ 茶屋 卯三郎<small>膳もの 1,400円前後 × 3名・概算</small></div><div class="val">4,200円</div></div>
+        <div class="row"><div class="lbl">軽食・お土産<small>概算</small></div><div class="val">6,000円</div></div>
+      </div>
+      <div class="total">
+        <div class="lbl">合計<small>うち当日ホテルで払う額 44,500円</small></div>
+        <div class="val">81,500円</div>
+      </div>
+    </div>
+
+    <div class="fixed-bar">
+      <b>参考</b>
+      <span>
+        2泊3日で検討していたときの最安案（10/16発・A案）は実費127,175円でした。
+        1泊2日にしたことで <strong>約45,700円のダウン</strong>。
+        候補を2つ足しても9万円前後で収まります。日程ごとの比較は <a href="compare.html">費用比較ページ</a> に残してあります。
+      </span>
+    </div>
+  </div>
+</section>
+
+<!-- ============ やること ============ -->
+<section id="todo">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="sec-num">To do</p>
+      <h2>やること</h2>
+      <p>上から順に期限が近いものです。</p>
+    </div>
+
+    <div class="grid g2">
+      <div class="card accent">
+        <p class="kicker">予約・手続き</p>
+        <ul class="todo">
+          <li class="done"><b>完了</b>ホテルサンバレー那須を予約（9/25泊・予約番号 04N8J1X1）</li>
+          <li class="done"><b>完了</b>合歓林オリエンタルの予約を取消（8/31）</li>
+          <li><b>いますぐ</b><strong>トレジャーストーンパークの「地下鉱山」をオンライン予約</strong>。9/25（金）10:00 前後の枠。1チーム3名まで1,800円</li>
+          <li><b>9/21 まで</b>この日程で行くかの最終判断。<strong>9/21（月）から取消料30%が発生</strong>します</li>
+          <li><b>9/24 24:00</b>サンバレーの支払方法（現地決済のまま／カード決済に変更）を決める</li>
+          <li><b>前日まで</b>とりっくあーとぴあの前売りチケットを購入（コンビニ・ウェブ）</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <p class="kicker">確認・準備</p>
+        <ul class="todo">
+          <li><b>電話</b>アクアヴィーナスの<strong>9/25の営業時間</strong>と、<strong>チェックイン前に入れるか</strong>をホテルに確認（0287-76-3800）</li>
+          <li><b>電話</b>プールのタオル・浮き輪のレンタル有無、水着の貸出があるか</li>
+          <li><b>持ち物</b>水着3人分、ビーチサンダル、濡れ物用の袋、着替え</li>
+          <li><b>持ち物</b>予約確認メールを印刷して持参（じゃらん推奨）</li>
+          <li><b>持ち物</b>宝石を持ち帰る小袋・ケース、汚れてもいい靴</li>
+          <li><b>当日</b>18時を過ぎそうならホテルへ電話</li>
+          <li><b>現地払い</b>44,500円ぶんの現金かカードを用意</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ リンク集 ============ -->
+<section id="links">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="sec-num">Links</p>
+      <h2>リンク集</h2>
+    </div>
+    <div class="grid g3">
+      <div class="card">
+        <h3 style="font-size:15px">宿</h3>
+        <div class="links">
+          <a class="primary" href="https://www.nasu3800.co.jp/" target="_blank" rel="noopener">サンバレー公式</a>
+          <a href="https://www.nasu3800.co.jp/spa/" target="_blank" rel="noopener">温泉・プール</a>
+          <a href="https://www.nasu3800.co.jp/rooms/forestvilla.php" target="_blank" rel="noopener">フォレストヴィラ</a>
+          <a href="https://www.jalan.net/yad331120/plan/" target="_blank" rel="noopener">じゃらんの宿ページ</a>
+        </div>
+      </div>
+      <div class="card">
+        <h3 style="font-size:15px">遊ぶ・食べる</h3>
+        <div class="links">
+          <a href="http://www.treasurestonepark.com/" target="_blank" rel="noopener">トレジャーストーンパーク</a>
+          <a href="http://www.treasurestonepark.com/hours.html" target="_blank" rel="noopener">営業カレンダー</a>
+          <a href="https://www.trick-art.jp/" target="_blank" rel="noopener">とりっくあーとぴあ</a>
+          <a href="https://www.trick-art.jp/ticket/" target="_blank" rel="noopener">とりっくあーとぴあ 料金</a>
+          <a href="https://usaburou.com/" target="_blank" rel="noopener">茶屋 卯三郎</a>
+        </div>
+      </div>
+      <div class="card">
+        <h3 style="font-size:15px">候補</h3>
+        <div class="links">
+          <a href="https://www.minamigaoka.co.jp/" target="_blank" rel="noopener">南ヶ丘牧場</a>
+          <a href="https://sgm-nasu.com/" target="_blank" rel="noopener">ステンドグラス美術館</a>
+          <a href="https://fujishiro-seiji-museum.jp/" target="_blank" rel="noopener">藤城清治美術館</a>
+          <a href="https://www.nasu-gardenoutlet.com/" target="_blank" rel="noopener">那須ガーデンアウトレット</a>
+          <a href="https://www.nasukogen.org/" target="_blank" rel="noopener">那須町観光協会</a>
+        </div>
+      </div>
+      <div class="card">
+        <h3 style="font-size:15px">Instagram</h3>
+        <div class="links">
+          <a class="ig" href="https://www.instagram.com/sunvalley_nasu_official/" target="_blank" rel="noopener">@sunvalley_nasu_official</a>
+          <a class="ig" href="https://www.instagram.com/treasurestonepark/" target="_blank" rel="noopener">@treasurestonepark</a>
+          <a class="ig" href="https://www.instagram.com/nasutrickart/" target="_blank" rel="noopener">@nasutrickart</a>
+          <a class="ig" href="https://www.instagram.com/chaya_usaburou/" target="_blank" rel="noopener">@chaya_usaburou</a>
+        </div>
+      </div>
+      <div class="card">
+        <h3 style="font-size:15px">記録</h3>
+        <div class="links">
+          <a href="index.html">旧・2泊3日 計画（6日程）</a>
+          <a href="compare.html">旧・6日程の費用比較</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <p>宿泊内容は じゃらんnet の予約確認メール（2026年8月30日受信・予約番号 04N8J1X1）の記載どおりです。</p>
+    <p>施設の営業日・料金は 2026年8月31日時点の各公式サイトの情報です。変更されることがあるので、当日までに再確認してください。</p>
+    <p>価格はすべて 大人2名＋小学生1名・1室の税込総額。食事・交通費・お土産は概算です。</p>
+  </div>
+</footer>
+
+</body>
+</html>
